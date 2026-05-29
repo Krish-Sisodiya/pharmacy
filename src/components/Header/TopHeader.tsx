@@ -206,7 +206,7 @@ const TopHeader = () => {
               <FaEnvelope />
             </motion.span>
             
-            <span className="text-[10px] sm:text-xs font-medium tracking-wide hidden xs:block relative z-10">
+            <span className="text-[10px] sm:text-xs font-medium tracking-wide whitespace-nowrap hidden xs:block">
               pharmacy@gmail.com
             </span>
             <span className="text-[10px] font-medium xs:hidden relative z-10">
@@ -251,7 +251,7 @@ const TopHeader = () => {
               <FaPhoneAlt />
             </motion.span>
             
-            <span className="text-[10px] sm:text-xs font-medium tracking-wide relative z-10">
+            <span className="text-[10px] sm:text-xs font-medium tracking-wide whitespace-nowrap">
               +91 9999999999
             </span>
             
