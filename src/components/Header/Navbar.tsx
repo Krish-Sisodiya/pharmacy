@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 import {
   FaBars, FaTimes, FaCapsules,
-  FaHome, FaBoxOpen, FaConciergeBell,
+  FaHome, FaBoxOpen,
   FaInfoCircle, FaPhoneAlt,
 } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const navItems = [
-  { name: "Home",     icon: <FaHome />,         link: "#home" },
-  { name: "Products", icon: <FaBoxOpen />,       link: "#products" },
-  { name: "Services", icon: <FaConciergeBell />, link: "#services" },
+  { name: "Home",     icon: <FaHome />,         link: "/" },
+  { name: "Products & Service", icon: <FaBoxOpen />,       link: "#products" },
+  //{ name: "Services", icon: <FaConciergeBell />, link: "#services" },
   { name: "About",    icon: <FaInfoCircle />,    link: "#about" },
   { name: "Contact",  icon: <FaPhoneAlt />,      link: "#contact" },
 ];
@@ -80,16 +81,27 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* DESKTOP CTA */}
-        <motion.a
-          href="#products"
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.95 }}
-          className="hidden lg:flex items-center gap-2 bg-gradient-to-r from-green-600 to-green-500 text-white px-4 py-2.5 rounded-xl font-semibold shadow-md text-sm transition duration-300 hover:shadow-lg"
-        >
-          <FaCapsules />
-          Explore Products
-        </motion.a>
+        <Link
+  to="/category/All"
+  className="
+    hidden lg:flex
+    items-center gap-2
+    bg-gradient-to-r
+    from-green-600
+    to-green-500
+    text-white
+    px-4 py-2.5
+    rounded-xl
+    font-semibold
+    shadow-md
+    text-sm
+    transition duration-300
+    hover:shadow-lg
+  "
+>
+  <FaCapsules />
+  Explore Products
+</Link>
 
         {/* MOBILE HAMBURGER */}
         <motion.button

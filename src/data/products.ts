@@ -56,7 +56,7 @@ export const products = [
 
   {
     id: 6,
-    category: "Supplements",
+    category: "Services",
     name: "Vitamin Supplements",
     image:
       "https://images.unsplash.com/photo-1514995669114-6081e934b693",

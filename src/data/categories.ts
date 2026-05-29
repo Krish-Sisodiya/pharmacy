@@ -36,7 +36,7 @@ export const categories = [
 
   {
     id: 6,
-    name: "Supplements",
+    name: "Services",
     image:
       "https://images.unsplash.com/photo-1514995669114-6081e934b693",
   },

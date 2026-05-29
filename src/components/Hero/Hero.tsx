@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
-import { FaHeartbeat, FaCapsules, FaArrowRight } from "react-icons/fa";
+import { FaCapsules, FaArrowRight } from "react-icons/fa";
 import HeroCard from "./HeroCard";
 import { products } from "../../data/products";
 import "swiper/css";
 import "swiper/css/pagination";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -68,24 +69,23 @@ const Hero = () => {
           </p>
 
           {/* BUTTONS */}
-          <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-            <motion.button
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center justify-center gap-2 bg-gradient-to-r from-green-600 to-green-500 text-white px-5 py-3 rounded-xl font-semibold shadow-md text-sm"
-            >
-              <FaCapsules />
-              Explore Products
-              <FaArrowRight />
-            </motion.button>
-
-            <motion.button
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center justify-center gap-2 border-2 border-green-600 text-green-700 px-5 py-3 rounded-xl font-semibold text-sm hover:bg-green-600 hover:text-white transition duration-300"
-            >
-              <FaHeartbeat />
-              Our Services
-            </motion.button>
-          </div>
+          <Link
+  to="/category/All"
+  className="
+    flex items-center justify-center gap-2
+    bg-gradient-to-r
+    from-green-600
+    to-green-500
+    text-white
+    px-5 py-3
+    rounded-xl
+    font-semibold
+  "
+>
+  <FaCapsules />
+  Explore Products
+  <FaArrowRight />
+</Link>
         </motion.div>
       </div>
     </section>
