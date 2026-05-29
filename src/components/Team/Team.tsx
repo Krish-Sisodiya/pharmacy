@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-
 import {
   FaFacebookF,
   FaInstagram,
@@ -11,330 +10,132 @@ const team = [
     id: 1,
     name: "Rahul Sharma",
     role: "Founder",
-    image:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e",
   },
-
   {
     id: 2,
     name: "Ankit Verma",
     role: "Director",
-    image:
-      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d",
+    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d",
   },
+];
+
+const socialIcons = [
+  { icon: <FaFacebookF />, label: "Facebook" },
+  { icon: <FaInstagram />, label: "Instagram" },
+  { icon: <FaLinkedinIn />, label: "LinkedIn" },
 ];
 
 const Team = () => {
   return (
-    <section
-      className="
-      relative
-      overflow-hidden
-      py-20
-      bg-gradient-to-b
-      from-green-50
-      via-white
-      to-green-50
-    "
-    >
+    <section className="relative overflow-hidden py-14 sm:py-20 bg-gradient-to-b from-green-50 via-white to-green-50">
 
       {/* BG GLOW */}
-      <div className="absolute top-0 left-0 w-[260px] h-[260px] bg-green-200/30 blur-[100px] rounded-full"></div>
-
-      <div className="absolute bottom-0 right-0 w-[220px] h-[220px] bg-green-300/20 blur-[90px] rounded-full"></div>
+      <div className="absolute top-0 left-0 w-[260px] h-[260px] bg-green-200/30 blur-[100px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[220px] h-[220px] bg-green-300/20 blur-[90px] rounded-full pointer-events-none" />
 
       <div className="container-custom relative z-10">
 
         {/* HEADING */}
         <motion.div
-          initial={{
-            opacity: 0,
-            y: 30,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          transition={{
-            duration: 0.7,
-          }}
-          viewport={{
-            once: true,
-          }}
-          className="text-center mb-14"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="text-center mb-10 sm:mb-14 px-2"
         >
-
           {/* BADGE */}
-          <div
-            className="
-            inline-flex
-            items-center
-            bg-green-100
-            text-green-700
-            px-5 py-2.5
-            rounded-full
-            text-sm
-            font-semibold
-            mb-5
-          "
-          >
-
+          <div className="inline-flex items-center bg-green-100 text-green-700 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4">
             Our Leadership
-
           </div>
 
           {/* TITLE */}
-          <h2
-            className="
-            text-3xl
-            md:text-5xl
-            font-black
-            leading-tight
-            mb-4
-          "
-          >
-
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-black leading-tight mb-3">
             Meet Our
-
-            <span className="gradient-text block">
-              Team Experts
-            </span>
-
+            <span className="gradient-text block">Team Experts</span>
           </h2>
 
           {/* TEXT */}
-          <p
-            className="
-            text-gray-600
-            text-base
-            md:text-lg
-            max-w-2xl
-            mx-auto
-            leading-relaxed
-          "
-          >
-
-            Dedicated healthcare professionals
-            delivering trusted pharmacy and
-            wellness solutions.
-
+          <p className="text-gray-500 text-sm sm:text-base md:text-lg max-w-xl mx-auto leading-relaxed">
+            Dedicated healthcare professionals delivering trusted
+            pharmacy and wellness solutions.
           </p>
-
         </motion.div>
 
-       {/* TEAM GRID */}
-<div
-  className="
-  grid
-  sm:grid-cols-2
-  gap-6
-  lg:gap-8
-  max-w-4xl
-  mx-auto
-"
->
+        {/* TEAM GRID */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 lg:gap-8 max-w-3xl mx-auto">
+          {team.map((member, index) => (
+            <motion.div
+              key={member.id}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -6 }}
+              className="group relative overflow-hidden rounded-3xl cursor-pointer shadow-lg"
+            >
+              {/* IMAGE */}
+              <div className="relative h-[300px] sm:h-[340px] md:h-[380px] overflow-hidden">
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                />
 
-  {team.map((member) => (
+                {/* OVERLAY — mobile pe thoda zyada dark taaki text padhe */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/5" />
 
-    <motion.div
-      key={member.id}
-      whileHover={{
-        y: -8,
-      }}
-      transition={{
-        duration: 0.4,
-      }}
-      className="
-      group
-      relative
-      overflow-hidden
-      rounded-[26px]
-      h-[300px]
-      md:h-[360px]
-      cursor-pointer
-      shadow-[0_15px_35px_rgba(0,0,0,0.12)]
-    "
-    >
+                {/* GREEN GLOW */}
+                <div className="absolute top-0 right-0 w-24 h-24 bg-green-400/20 blur-[60px] rounded-full" />
 
-      {/* IMAGE */}
-      <img
-        src={member.image}
-        alt={member.name}
-        className="
-        w-full
-        h-full
-        object-cover
-        grayscale
-        group-hover:grayscale-0
-        group-hover:scale-105
-        transition duration-700
-      "
-      />
+                {/* CONTENT — mobile pe ALWAYS visible, desktop pe hover pe enhanced */}
+                <div className="absolute bottom-0 left-0 w-full p-4 sm:p-5 text-white">
 
-      {/* OVERLAY */}
-      <div
-        className="
-        absolute
-        inset-0
-        bg-gradient-to-t
-        from-black/90
-        via-black/10
-        to-transparent
-      "
-      ></div>
+                  {/* ROLE */}
+                  <p className="text-green-400 uppercase tracking-widest text-[10px] sm:text-xs font-semibold mb-1">
+                    {member.role}
+                  </p>
 
-      {/* GREEN GLOW */}
-      <div
-        className="
-        absolute
-        top-0
-        right-0
-        w-28
-        h-28
-        bg-green-400/20
-        blur-[70px]
-        rounded-full
-      "
-      ></div>
+                  {/* NAME */}
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-black mb-3">
+                    {member.name}
+                  </h3>
 
-      {/* CONTENT */}
-      <div
-        className="
-        absolute
-        bottom-0
-        left-0
-        w-full
-        p-5
-        text-white
-
-        opacity-0
-        translate-y-10
-
-        group-hover:opacity-100
-        group-hover:translate-y-0
-
-        transition-all
-        duration-500
-      "
-      >
-
-        {/* ROLE */}
-        <p
-          className="
-          text-green-300
-          uppercase
-          tracking-[3px]
-          text-xs
-          font-semibold
-          mb-2
-        "
-        >
-
-          {member.role}
-
-        </p>
-
-        {/* NAME */}
-        <h3
-          className="
-          text-2xl
-          md:text-3xl
-          font-black
-          mb-4
-        "
-        >
-
-          {member.name}
-
-        </h3>
-
-        {/* SOCIALS */}
-        <div className="flex items-center gap-3">
-
-          {/* ICON */}
-          <motion.div
-            whileHover={{
-              y: -4,
-              scale: 1.08,
-            }}
-            className="
-            w-10
-            h-10
-            rounded-2xl
-            bg-white/15
-            backdrop-blur-xl
-            border border-white/20
-            flex items-center justify-center
-            text-sm
-            hover:bg-green-500
-            transition duration-300
-          "
-          >
-
-            <FaFacebookF />
-
-          </motion.div>
-
-          {/* ICON */}
-          <motion.div
-            whileHover={{
-              y: -4,
-              scale: 1.08,
-            }}
-            className="
-            w-10
-            h-10
-            rounded-2xl
-            bg-white/15
-            backdrop-blur-xl
-            border border-white/20
-            flex items-center justify-center
-            text-sm
-            hover:bg-green-500
-            transition duration-300
-          "
-          >
-
-            <FaInstagram />
-
-          </motion.div>
-
-          {/* ICON */}
-          <motion.div
-            whileHover={{
-              y: -4,
-              scale: 1.08,
-            }}
-            className="
-            w-10
-            h-10
-            rounded-2xl
-            bg-white/15
-            backdrop-blur-xl
-            border border-white/20
-            flex items-center justify-center
-            text-sm
-            hover:bg-green-500
-            transition duration-300
-          "
-          >
-
-            <FaLinkedinIn />
-
-          </motion.div>
-
+                  {/* SOCIALS — mobile pe always show, desktop pe hover */}
+                  <div className="flex items-center gap-2.5
+                    opacity-100 sm:opacity-0 sm:translate-y-4
+                    sm:group-hover:opacity-100 sm:group-hover:translate-y-0
+                    transition-all duration-400"
+                  >
+                    {socialIcons.map((social) => (
+                      <motion.div
+                        key={social.label}
+                        whileHover={{ y: -3, scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                        aria-label={social.label}
+                        className="
+                          w-9 h-9 sm:w-10 sm:h-10
+                          rounded-xl
+                          bg-white/15 backdrop-blur-md
+                          border border-white/20
+                          flex items-center justify-center
+                          text-sm
+                          hover:bg-green-500
+                          transition duration-300
+                          cursor-pointer
+                        "
+                      >
+                        {social.icon}
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
 
       </div>
-
-    </motion.div>
-
-  ))}
-
-</div>
-
-      </div>
-
     </section>
   );
 };

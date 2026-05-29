@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* Custom Breakpoint */
+@theme {
+  --breakpoint-xs: 480px;
+}
+
 /* Smooth Scroll */
 html {
   scroll-behavior: smooth;
