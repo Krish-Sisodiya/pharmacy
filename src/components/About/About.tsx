@@ -11,22 +11,12 @@ const images = [
   "https://images.unsplash.com/photo-1580281657527-47f249e8f4df?w=800&q=80",
 ];
 
-const stats = [
-  { value: "500+", label: "Products" },
-  { value: "10K+", label: "Customers" },
-  { value: "5★", label: "Rating" },
-];
-
 const About = () => {
   return (
     <section
       id="about"
-      className="relative py-14 sm:py-20 lg:py-24 bg-gradient-to-b from-white via-green-50/40 to-white overflow-x-hidden"
+      className="relative py-14 sm:py-20 lg:py-24 overflow-x-hidden"
     >
-      {/* BG GLOW */}
-      <div className="absolute top-0 left-0 w-64 h-64 bg-green-200/30 blur-[100px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-56 h-56 bg-green-300/20 blur-[90px] rounded-full pointer-events-none" />
-
       <div className="container-custom relative z-10">
 
         {/* IMAGE SECTION */}
@@ -160,16 +150,6 @@ const About = () => {
               essentials, skincare collections, and pharmacy solutions
               with a smooth and trusted customer experience.
             </p>
-
-            {/* STATS */}
-            <div className="grid grid-cols-3 gap-3 pt-6 border-t border-gray-100">
-              {stats.map((stat) => (
-                <div key={stat.label} className="text-center">
-                  <p className="text-green-600 text-xl sm:text-2xl font-black">{stat.value}</p>
-                  <p className="text-gray-400 text-xs sm:text-sm mt-0.5">{stat.label}</p>
-                </div>
-              ))}
-            </div>
           </motion.div>
         </div>
       </div>

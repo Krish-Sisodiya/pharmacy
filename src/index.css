@@ -1,45 +1,98 @@
 @import "tailwindcss";
 
-/* Custom Breakpoint */
+/* ============================================
+   CUSTOM BREAKPOINT
+   ============================================ */
 @theme {
   --breakpoint-xs: 480px;
 }
 
-/* Smooth Scroll */
+/* ============================================
+   BASE STYLES
+   ============================================ */
 html {
   scroll-behavior: smooth;
 }
 
-/* Body */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 body {
-  background: #ffffff;
+  /* TRANSPARENT background — bubbles dikhenge */
+  background: transparent;
   color: #0f172a;
-  font-family: sans-serif;
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  min-height: 100dvh;
 }
 
-/* Custom Container */
+/* Touch devices — tap highlight remove */
+@media (hover: none) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Focus accessibility */
+:focus-visible {
+  outline: 2px solid #22c55e;
+  outline-offset: 2px;
+}
+
+/* ============================================
+   CUSTOM UTILITIES
+   ============================================ */
+
+/* Container */
 .container-custom {
-  @apply max-w-7xl mx-auto px-4 md:px-8;
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
 }
 
-/* Gradient Text */
+/* Gradient Text — animated */
 .gradient-text {
-  @apply bg-gradient-to-r from-green-600 to-green-400 bg-clip-text text-transparent;
+  @apply bg-gradient-to-r from-green-600 via-emerald-500 to-teal-400 bg-clip-text text-transparent;
+  animation: gradient-shift 3.5s ease infinite;
+  background-size: 200% 200%;
 }
 
 /* Glass Effect */
 .glass {
-  background: rgba(255,255,255,0.2);
+  background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Button */
+/* Primary Button */
 .btn-primary {
   @apply bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-xl font-semibold transition duration-300 shadow-lg hover:scale-105;
 }
 
 /* Section Padding */
 .section-padding {
-  @apply py-20;
+  @apply py-16 sm:py-20;
+}
+
+/* Performance */
+.will-change-transform {
+  will-change: transform;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+/* Gradient shift — gradient-text ke liye */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+
+/* Animate gradient shift utility */
+.animate-gradient-shift {
+  animation: gradient-shift 4s ease infinite;
+  background-size: 200% 200%;
 }

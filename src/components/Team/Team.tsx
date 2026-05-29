@@ -28,12 +28,9 @@ const socialIcons = [
 
 const Team = () => {
   return (
-    <section className="relative overflow-hidden py-14 sm:py-20 bg-gradient-to-b from-green-50 via-white to-green-50">
+    <section className="relative overflow-hidden py-14 sm:py-20">
 
-      {/* BG GLOW */}
-      <div className="absolute top-0 left-0 w-[260px] h-[260px] bg-green-200/30 blur-[100px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[220px] h-[220px] bg-green-300/20 blur-[90px] rounded-full pointer-events-none" />
-
+      
       <div className="container-custom relative z-10">
 
         {/* HEADING */}

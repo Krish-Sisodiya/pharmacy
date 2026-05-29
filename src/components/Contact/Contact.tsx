@@ -42,12 +42,8 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="relative overflow-x-hidden py-14 sm:py-20 lg:py-28 bg-gradient-to-b from-white via-green-50/40 to-white"
+      className="relative overflow-x-hidden py-14 sm:py-20 lg:py-28"
     >
-      {/* BG GLOW */}
-      <div className="absolute top-0 left-0 w-72 h-72 bg-green-200/30 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-64 h-64 bg-green-300/20 blur-[100px] rounded-full pointer-events-none" />
-
       <div className="container-custom relative z-10">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
@@ -189,29 +185,6 @@ const Contact = () => {
                   </div>
                 </div>
               </motion.div>
-            </motion.div>
-
-            {/* STAT CARDS — desktop only, floating outside image */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="hidden lg:flex absolute -left-12 top-1/3 flex-col items-center bg-white rounded-2xl px-5 py-4 shadow-[0_15px_40px_rgba(0,0,0,0.1)] border border-green-50"
-            >
-              <span className="text-green-600 text-2xl font-black">10K+</span>
-              <span className="text-gray-400 text-xs mt-0.5">Happy Clients</span>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.55 }}
-              viewport={{ once: true }}
-              className="hidden lg:flex absolute -right-10 top-16 flex-col items-center bg-white rounded-2xl px-5 py-4 shadow-[0_15px_40px_rgba(0,0,0,0.1)] border border-green-50"
-            >
-              <span className="text-green-600 text-2xl font-black">500+</span>
-              <span className="text-gray-400 text-xs mt-0.5">Products</span>
             </motion.div>
           </motion.div>
 

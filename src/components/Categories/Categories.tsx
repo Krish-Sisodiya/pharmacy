@@ -11,11 +11,9 @@ const Categories = () => {
   return (
     <section
       id="products"
-      className="relative overflow-hidden py-14 sm:py-20 lg:py-24 bg-gradient-to-b from-white via-green-50/40 to-white"
+      className="relative overflow-hidden py-14 sm:py-20 lg:py-24"
     >
       {/* BACKGROUND GLOW */}
-      <div className="absolute top-0 left-0 w-[300px] h-[300px] bg-green-200/20 blur-[100px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[250px] h-[250px] bg-green-300/20 blur-[100px] rounded-full pointer-events-none" />
 
       <div className="container-custom relative z-10">
 

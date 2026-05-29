@@ -12,7 +12,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative overflow-hidden bg-gradient-to-br from-green-50 via-white to-green-100"
+      className="relative overflow-hidden"
     >
       {/* GLOW */}
       <div className="absolute top-0 left-0 w-52 h-52 bg-green-300/20 blur-[100px] rounded-full pointer-events-none" />
@@ -92,4 +92,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default Hero; 
