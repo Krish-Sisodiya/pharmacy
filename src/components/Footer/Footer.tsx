@@ -1,5 +1,5 @@
 import { motion, type Variants } from "framer-motion";
-import logo from "../../../public/1 (1).png";
+import logo from "../../../public/img/1 (1).png";
 
 import {
   FaFacebookF,
