@@ -198,7 +198,7 @@ const Navbar = () => {
   transition={{ duration: 0.5 }}
 >
   <img
-    src="/public/1 (1).png"
+    src="/img/1 (1).png"
     alt="AushadhiWalah Logo"
     className="w-full h-full object-cover"
   />
