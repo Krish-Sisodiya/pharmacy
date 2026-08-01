@@ -1,43 +1,31 @@
 export const categories = [
   {
     id: 1,
-    name: "Face Wash",
+    name: "Herbal Extracts",
     image:
-      "https://images.unsplash.com/photo-1556228578-8c89e6adf883",
+      "/public/categries 1.jpeg",
   },
 
   {
     id: 2,
-    name: "Cream",
+    name: "Spray Dryer Powder",
     image:
-      "https://images.unsplash.com/photo-1571781926291-c477ebfd024b",
+      "/public/ccategries 2.jpeg",
   },
 
   {
     id: 3,
-    name: "Powder",
+    name: "Fruit Powder",
     image:
-      "https://images.unsplash.com/photo-1587854692152-cbe660dbde88",
+      "/public/categries 3.jpeg",
   },
 
   {
     id: 4,
-    name: "Hair Oil",
+    name: "Dehydrated powder",
     image:
-      "https://images.unsplash.com/photo-1625772452859-1c03d5bf1137",
+      "/public/categries 4.jpeg",
   },
 
-  {
-    id: 5,
-    name: "Medicines",
-    image:
-      "https://images.unsplash.com/photo-1584017911766-d451b3d0e843",
-  },
 
-  {
-    id: 6,
-    name: "Services",
-    image:
-      "https://images.unsplash.com/photo-1514995669114-6081e934b693",
-  },
 ];

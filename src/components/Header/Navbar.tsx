@@ -192,54 +192,26 @@ const Navbar = () => {
           className="flex items-center gap-2.5 cursor-pointer group"
         >
           {/* Animated Logo Icon */}
-          <motion.div
-            className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-green-500 to-green-700 flex items-center justify-center text-white text-lg shadow-lg shrink-0 overflow-hidden"
-            whileHover={{ rotate: [0, -5, 5, -5, 0] }}
-            transition={{ duration: 0.5 }}
-          >
-            <motion.div
-              animate={{
-                scale: [1, 1.1, 1],
-                rotate: [0, 180, 360],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "linear",
-              }}
-              className="absolute inset-0 bg-gradient-to-r from-green-400/30 to-emerald-300/30 blur-md"
-            />
-            <FaCapsules className="relative z-10" />
+         <motion.div
+  className="relative w-25 h-15 overflow-hidden "
+  whileHover={{ rotate: [0, -5, 5, -5, 0] }}
+  transition={{ duration: 0.5 }}
+>
+  <img
+    src="/public/1 (1).png"
+    alt="AushadhiWalah Logo"
+    className="w-full h-full object-cover"
+  />
 
-            {/* Pulse ring effect */}
-            <motion.div
-              className="absolute inset-0 rounded-xl border-2 border-green-300/50"
-              animate={{ scale: [1, 1.3, 1], opacity: [0.5, 0, 0.5] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-          </motion.div>
-
+  <motion.div
+   
+    animate={{ scale: [1, 1.3, 1], opacity: [0.5, 0, 0.5] }}
+    transition={{ duration: 2, repeat: Infinity }}
+  />
+</motion.div>
           {/* Logo Text with gradient animation */}
           <div className="leading-tight overflow-hidden">
-            <motion.h1
-              className="text-lg sm:text-xl font-black tracking-wide"
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2 }}
-            >
-              <span className="text-green-700">Pharma</span>
-              <span className="bg-gradient-to-r from-green-600 via-emerald-500 to-teal-400 bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-shift">
-                Care
-              </span>
-            </motion.h1>
-            <motion.p
-              className="text-[9px] sm:text-[10px] text-gray-400 font-semibold tracking-widest uppercase"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-            >
-              Healthcare Store
-            </motion.p>
+            
           </div>
         </motion.a>
 

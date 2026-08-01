@@ -50,22 +50,18 @@ const Hero = () => {
           transition={{ duration: 0.7 }}
           className="text-center lg:text-left order-2 lg:order-1 px-2 pt-6 pb-8 lg:py-0"
         >
-          {/* SMALL TAG */}
-          <p className="text-green-600 font-semibold text-xs tracking-widest uppercase mb-2">
-            Premium Pharmacy Store
-          </p>
+         
 
           {/* HEADING */}
           <h1 className="text-[26px] sm:text-5xl lg:text-7xl font-black leading-[1.1] mb-3">
-            Modern
-            <span className="gradient-text block">Healthcare</span>
-            Products
+            Herbal
+            <span className="gradient-text block">Extracts</span>
+            Manufacturer
           </h1>
 
           {/* DESCRIPTION */}
           <p className="text-gray-500 text-sm sm:text-base lg:text-lg leading-relaxed mb-5 max-w-sm mx-auto lg:mx-0">
-            Discover premium healthcare, skincare, wellness products,
-            and pharmacy essentials with trusted modern care.
+            Premium Herbal Extracts, Nutraceutical Ingredients & Botanical Solutions .
           </p>
 
           {/* BUTTONS */}

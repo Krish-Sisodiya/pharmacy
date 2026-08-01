@@ -1,4 +1,5 @@
 import { motion, type Variants } from "framer-motion";
+import logo from "../../../public/1 (1).png";
 
 import {
   FaFacebookF,
@@ -94,27 +95,30 @@ const Footer = () => {
           {/* COMPANY INFO */}
           <div>
             <div className="flex items-center gap-3 mb-5">
-              <div
-                className="
-                w-14 h-14
-                rounded-2xl
-                bg-gradient-to-br
-                from-green-500
-                to-green-700
-                flex items-center justify-center
-                text-2xl font-black
-                shadow-lg
-              "
-              >
-                P
-              </div>
+             
+
+<div
+  className="
+  w-14 h-14
+  rounded-2xl
+  bg-white
+  flex items-center justify-center
+  shadow-lg
+  border border-gray-200
+  overflow-hidden
+"
+>
+  <img
+    src={logo}
+    alt=""
+    className="w-full h-full object-cover"
+  />
+</div>
               <div>
                 <h2 className="text-2xl font-black">
-                  PharmaCare
+                  Aushadhiwalah
                 </h2>
-                <p className="text-green-300 text-sm">
-                  Healthcare Platform
-                </p>
+              
               </div>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
@@ -152,19 +156,19 @@ const Footer = () => {
               <div className="flex items-start gap-3">
                 <FaPhoneAlt className="text-green-400 mt-1" />
                 <span className="text-gray-400 text-sm">
-                  +91 99999 99999
+                  +91 9691190195
                 </span>
               </div>
               <div className="flex items-start gap-3">
                 <FaEnvelope className="text-green-400 mt-1" />
                 <span className="text-gray-400 text-sm">
-                  pharmacy@gmail.com
+                  aushadhiwalah@gmail.com
                 </span>
               </div>
               <div className="flex items-start gap-3">
                 <FaMapMarkerAlt className="text-green-400 mt-1" />
                 <span className="text-gray-400 text-sm">
-                  Raipur, Chhattisgarh, India
+                  Industrial Area Sanwer Road, Indore
                 </span>
               </div>
             </div>

@@ -181,7 +181,7 @@ const TopHeader = () => {
           {/* EMAIL */}
           <motion.a
             variants={itemVariants}
-            href="mailto:pharmacy@gmail.com"
+            href="aushadhiwalah@gmail.com"
             whileHover={{ scale: 1.05, x: 2 }}
             whileTap={{ scale: 0.95 }}
             onHoverStart={() => setIsHovered("email")}
@@ -207,7 +207,7 @@ const TopHeader = () => {
             </motion.span>
             
             <span className="text-[10px] sm:text-xs font-medium tracking-wide whitespace-nowrap hidden xs:block">
-              pharmacy@gmail.com
+              aushadhiwalah@gmail
             </span>
             <span className="text-[10px] font-medium xs:hidden relative z-10">
               Email
@@ -225,7 +225,7 @@ const TopHeader = () => {
           {/* PHONE */}
           <motion.a
             variants={itemVariants}
-            href="tel:+919999999999"
+            href="tel:+919691190195"
             whileHover={{ scale: 1.05, x: 2 }}
             whileTap={{ scale: 0.95 }}
             className="group relative flex items-center gap-2 bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-full backdrop-blur-md border border-white/10 transition-all duration-300 overflow-hidden"
@@ -252,7 +252,7 @@ const TopHeader = () => {
             </motion.span>
             
             <span className="text-[10px] sm:text-xs font-medium tracking-wide whitespace-nowrap">
-              +91 9999999999
+              +91 9691190195
             </span>
             
             <motion.div
