@@ -8,6 +8,9 @@ import {
   FaInfoCircle,
   FaPhoneAlt,
   FaArrowRight,
+  FaUser,
+  FaSignOutAlt,
+  FaChevronDown,
 } from "react-icons/fa";
 import {
   motion,
@@ -16,7 +19,7 @@ import {
   useMotionValueEvent,
   type Variants,
 } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const navItems = [
   { name: "Home", icon: <FaHome />, link: "/" },
@@ -25,7 +28,6 @@ const navItems = [
   { name: "Contact", icon: <FaPhoneAlt />, link: "#contact" },
 ];
 
-// Animation variants for staggered effects
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -40,11 +42,10 @@ const containerVariants: Variants = {
 const magneticHover: Variants = {
   rest: { scale: 1, rotate: 0 },
   hover: {
-    scale: 1.08,
-    rotate: [-1, 1, -1, 0],
-    transition: { duration: 0.3, ease: "easeOut" },
+    scale: 1.05,
+    transition: { duration: 0.25, ease: "easeOut" },
   },
-  tap: { scale: 0.95, rotate: 0 },
+  tap: { scale: 0.95 },
 };
 
 const itemVariants: Variants = {
@@ -86,17 +87,43 @@ const mobileItemVariants = {
 } satisfies Variants;
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("Home");
+  const [userDropdown, setUserDropdown] = useState(false);
+
+  // 🔹 Authentication state checking
+ interface UserType {
+  name: string;
+  email: string;
+}
+
+// State ko explicitly type do
+const [user, setUser] = useState<UserType | null>(() => {
+  try {
+    const savedUser = localStorage.getItem("user");
+    return savedUser ? (JSON.parse(savedUser) as UserType) : null;
+  } catch {
+    localStorage.removeItem("user");
+    return null;
+  }
+});
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    setUser(null);
+    setUserDropdown(false);
+    navigate("/");
+  };
+
   const { scrollY } = useScroll();
 
-  // Scroll-based navbar effects
   useMotionValueEvent(scrollY, "change", (latest) => {
     setScrolled(latest > 10);
   });
 
-  // Lock body scroll when menu open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => {
@@ -104,44 +131,40 @@ const Navbar = () => {
     };
   }, [menuOpen]);
 
-  // Track active section for highlight
   useEffect(() => {
-  const handleScroll = () => {
-    const scrollPos = window.scrollY + 100;
+    const handleScroll = () => {
+      const scrollPos = window.scrollY + 100;
 
-    // ✅ Direct navItems pe loop chalao, taaki 'item' available rahe
-    for (const item of navItems) {
-      // Link se '#' hata kar section ID nikalo
-      const sectionId = item.link.replace("#", "");
-      
-      // Agar sectionId empty hai (jaise "/" for Home), toh special handling
-      if (!sectionId || sectionId === "/") {
-        if (scrollPos < 200) { // Top section maan lo
-          setActiveSection("Home");
-          break;
+      for (const item of navItems) {
+        const sectionId = item.link.replace("#", "");
+
+        if (!sectionId || sectionId === "/") {
+          if (scrollPos < 200) {
+            setActiveSection("Home");
+            break;
+          }
+          continue;
         }
-        continue;
-      }
 
-      const element = document.getElementById(sectionId);
-      if (element) {
-        const { offsetTop, offsetHeight } = element;
-        if (scrollPos >= offsetTop && scrollPos < offsetTop + offsetHeight) {
-          // ✅ Ab 'item' available hai, toh item.name use kar sakte ho!
-          setActiveSection(item.name);
-          break;
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPos >= offsetTop && scrollPos < offsetTop + offsetHeight) {
+            setActiveSection(item.name);
+            break;
+          }
         }
       }
-    }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+    setUserDropdown(false);
   };
-
-  window.addEventListener("scroll", handleScroll, { passive: true });
-  return () => window.removeEventListener("scroll", handleScroll);
-}, []); // ✅ Dependencies empty rakh sakte ho kyunki navItems constant hais
-
-  const closeMenu = () => setMenuOpen(false);
-
-  // Magnetic hover effect helper
 
   return (
     <motion.nav
@@ -181,41 +204,29 @@ const Navbar = () => {
       />
 
       <div className="container-custom px-4 sm:px-5 py-3 flex justify-between items-center relative z-10">
-        {/* ✨ LOGO WITH ANIMATIONS */}
-        <motion.a
-          href="#home"
-          variants={itemVariants}
-          initial="hidden"
-          animate="visible"
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.97 }}
-          className="flex items-center gap-2.5 cursor-pointer group"
-        >
-          {/* Animated Logo Icon */}
-         <motion.div
-  className="relative w-25 h-15 overflow-hidden "
-  whileHover={{ rotate: [0, -5, 5, -5, 0] }}
-  transition={{ duration: 0.5 }}
->
-  <img
-    src="/img/1 (1).png"
-    alt="AushadhiWalah Logo"
-    className="w-full h-full object-cover"
-  />
+        {/* LOGO */}
+        <Link to="/" className="flex items-center gap-2.5 cursor-pointer group">
+          <motion.div
+            className="relative w-12 h-12 rounded-xl bg-white border border-green-100 flex items-center justify-center shadow-sm overflow-hidden"
+            whileHover={{ rotate: [0, -5, 5, -5, 0] }}
+            transition={{ duration: 0.5 }}
+          >
+            <img
+              src="/img/1 (1).png"
+              alt="AushadhiWalah Logo"
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                e.currentTarget.style.display = "none";
+              }}
+            />
+            <FaCapsules className="text-green-600 text-xl" />
+          </motion.div>
+          <span className="text-lg font-black text-gray-800 tracking-tight hidden xs:block">
+            Aushadhi<span className="text-green-600">walah</span>
+          </span>
+        </Link>
 
-  <motion.div
-   
-    animate={{ scale: [1, 1.3, 1], opacity: [0.5, 0, 0.5] }}
-    transition={{ duration: 2, repeat: Infinity }}
-  />
-</motion.div>
-          {/* Logo Text with gradient animation */}
-          <div className="leading-tight overflow-hidden">
-            
-          </div>
-        </motion.a>
-
-        {/* 🖥️ DESKTOP MENU WITH HOVER ANIMATIONS */}
+        {/* DESKTOP MENU */}
         <motion.ul
           variants={containerVariants}
           initial="hidden"
@@ -236,15 +247,15 @@ const Navbar = () => {
                     : "text-gray-600 hover:text-green-700 hover:bg-green-50/80"
                 }`}
               >
-                {/* Animated Icon */}
                 <motion.span
-                  className={`text-xs ${activeSection === item.name ? "text-green-600" : "text-green-500"}`}
+                  className={`text-xs ${
+                    activeSection === item.name
+                      ? "text-green-600"
+                      : "text-green-500"
+                  }`}
                   animate={
                     activeSection === item.name
-                      ? {
-                          scale: [1, 1.2, 1],
-                          rotate: [0, -10, 10, 0],
-                        }
+                      ? { scale: [1, 1.2, 1], rotate: [0, -10, 10, 0] }
                       : {}
                   }
                   transition={{ duration: 0.4 }}
@@ -254,7 +265,6 @@ const Navbar = () => {
 
                 {item.name}
 
-                {/* Animated underline with glow */}
                 <motion.span
                   className="absolute bottom-1.5 left-1/2 h-[2px] bg-gradient-to-r from-green-500 to-emerald-400 rounded-full"
                   initial={{ width: 0, x: "-50%", opacity: 0 }}
@@ -266,7 +276,6 @@ const Navbar = () => {
                   transition={{ duration: 0.3 }}
                 />
 
-                {/* Subtle glow on active */}
                 {activeSection === item.name && (
                   <motion.div
                     className="absolute inset-0 rounded-xl bg-green-500/5"
@@ -279,23 +288,18 @@ const Navbar = () => {
           ))}
         </motion.ul>
 
-        {/* 🛍️ EXPLORE BUTTON WITH MAGNETIC EFFECT */}
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.4 }}
-          className="hidden lg:block"
-        >
+        {/* 🛍️ EXPLORE BUTTON + 👤 LOGIN / PROFILE BUTTON (DESKTOP) */}
+        <div className="hidden lg:flex items-center gap-3">
+          {/* Explore Button */}
           <Link to="/category/All" className="relative overflow-hidden">
             <motion.button
               variants={magneticHover}
               initial="rest"
-              animate="rest" 
+              animate="rest"
               whileHover="hover"
               whileTap="tap"
               className="relative flex items-center gap-2 bg-gradient-to-r from-green-600 to-green-500 text-white px-5 py-2.5 rounded-xl font-semibold text-sm shadow-lg shadow-green-500/25 overflow-hidden"
             >
-              {/* Animated background gradient */}
               <motion.div
                 className="absolute inset-0 bg-gradient-to-r from-green-500 via-emerald-400 to-green-500"
                 animate={{
@@ -314,35 +318,81 @@ const Navbar = () => {
               >
                 <FaArrowRight className="w-3.5 h-3.5" />
               </motion.span>
-
-              {/* Shine effect on hover */}
-              <motion.div
-                className="absolute inset-0 bg-white/20"
-                initial={{ x: "-100%" }}
-                whileHover={{ x: "100%" }}
-                transition={{ duration: 0.4 }}
-              />
             </motion.button>
           </Link>
-        </motion.div>
 
-        {/* 📱 MOBILE HAMBURGER WITH ANIMATED ICON */}
+          {/* Login or User Profile Dropdown */}
+          {user ? (
+            <div className="relative">
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => setUserDropdown(!userDropdown)}
+                className="flex items-center gap-2.5 bg-green-50 hover:bg-green-100/70 border border-green-200 px-3.5 py-2 rounded-xl text-sm font-bold text-green-800 transition"
+              >
+                <div className="w-7 h-7 rounded-lg bg-green-600 text-white flex items-center justify-center text-xs font-bold uppercase shadow-sm">
+                  {user.name ? user.name.charAt(0) : "U"}
+                </div>
+                <span className="max-w-[100px] truncate">{user.name || "Account"}</span>
+                <FaChevronDown
+                  className={`text-[10px] text-green-600 transition-transform duration-300 ${
+                    userDropdown ? "rotate-180" : ""
+                  }`}
+                />
+              </motion.button>
+
+              <AnimatePresence>
+                {userDropdown && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute right-0 mt-2 w-52 bg-white rounded-2xl shadow-xl border border-green-100 p-2 z-50"
+                  >
+                    <div className="px-3 py-2 border-b border-gray-100">
+                      <p className="text-[11px] text-gray-400 font-medium uppercase">
+                        Signed in as
+                      </p>
+                      <p className="text-xs font-bold text-gray-800 truncate">
+                        {user.email}
+                      </p>
+                    </div>
+
+                    <button
+                      onClick={handleLogout}
+                      className="w-full mt-1 flex items-center gap-2 px-3 py-2 text-xs font-semibold text-red-600 hover:bg-red-50 rounded-xl transition duration-150"
+                    >
+                      <FaSignOutAlt />
+                      <span>Log Out</span>
+                    </button>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          ) : (
+            <Link to="/auth">
+              <motion.button
+                variants={magneticHover}
+                initial="rest"
+                whileHover="hover"
+                whileTap="tap"
+                className="flex items-center gap-2 bg-white border border-green-200 hover:bg-green-50 text-green-700 px-4 py-2.5 rounded-xl font-bold text-sm shadow-sm transition duration-300"
+              >
+                <FaUser className="text-xs text-green-600" />
+                <span>Login</span>
+              </motion.button>
+            </Link>
+          )}
+        </div>
+
+        {/* 📱 MOBILE HAMBURGER BUTTON */}
         <motion.button
           whileTap={{ scale: 0.85 }}
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
           className="lg:hidden relative w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-green-100 to-emerald-50 flex items-center justify-center text-green-700 text-base shadow-sm border border-green-200/50 overflow-hidden"
         >
-          {/* Animated background pulse */}
-          <motion.div
-            className="absolute inset-0 bg-green-200/30 rounded-xl"
-            animate={{
-              scale: menuOpen ? [1, 1.2, 1] : 1,
-              opacity: menuOpen ? [0.3, 0.5, 0.3] : 0,
-            }}
-            transition={{ duration: 0.3 }}
-          />
-
           <AnimatePresence mode="wait" initial={false}>
             {menuOpen ? (
               <motion.span
@@ -369,11 +419,10 @@ const Navbar = () => {
         </motion.button>
       </div>
 
-      {/* 📱 MOBILE MENU - SLIDE DOWN WITH STAGGERED ITEMS */}
+      {/* 📱 MOBILE MENU */}
       <AnimatePresence>
         {menuOpen && (
           <>
-            {/* Backdrop with blur */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -382,7 +431,6 @@ const Navbar = () => {
               className="lg:hidden fixed inset-0 top-[60px] bg-black/10 backdrop-blur-sm z-40"
             />
 
-            {/* Menu Panel with spring animation */}
             <motion.div
               initial={{ opacity: 0, y: -15, scaleY: 0.95 }}
               animate={{ opacity: 1, y: 0, scaleY: 1 }}
@@ -395,11 +443,45 @@ const Navbar = () => {
               }}
               className="lg:hidden absolute w-full bg-white/95 backdrop-blur-xl border-t border-green-100 shadow-2xl shadow-green-500/10 z-50 overflow-hidden"
             >
-              {/* Decorative gradient top border */}
               <div className="h-1 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-400" />
 
               <div className="px-4 pt-4 pb-6 flex flex-col gap-2">
-                {/* NAV LINKS with staggered entrance */}
+                {/* User Mobile Card or Login Button */}
+                {user ? (
+                  <div className="flex items-center justify-between p-3 bg-green-50/80 rounded-xl border border-green-100 mb-2">
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-9 h-9 rounded-lg bg-green-600 text-white flex items-center justify-center font-bold text-xs">
+                        {user.name ? user.name.charAt(0) : "U"}
+                      </div>
+                      <div>
+                        <p className="text-xs font-bold text-gray-800">
+                          {user.name}
+                        </p>
+                        <p className="text-[10px] text-gray-400 truncate max-w-[170px]">
+                          {user.email}
+                        </p>
+                      </div>
+                    </div>
+                    <button
+                      onClick={handleLogout}
+                      className="p-2 text-red-600 hover:bg-red-50 rounded-lg text-sm"
+                      title="Log Out"
+                    >
+                      <FaSignOutAlt />
+                    </button>
+                  </div>
+                ) : (
+                  <Link
+                    to="/auth"
+                    onClick={closeMenu}
+                    className="flex items-center justify-center gap-2 w-full py-3 bg-white border border-green-200 text-green-700 font-bold rounded-xl text-sm shadow-sm hover:bg-green-50 transition mb-2"
+                  >
+                    <FaUser className="text-xs" />
+                    <span>Login / Register</span>
+                  </Link>
+                )}
+
+                {/* Nav Links */}
                 <motion.div
                   variants={containerVariants}
                   initial="hidden"
@@ -420,7 +502,6 @@ const Navbar = () => {
                           : "bg-gray-50/80 hover:bg-green-50 hover:text-green-700 text-gray-700"
                       }`}
                     >
-                      {/* Animated Icon Container */}
                       <motion.span
                         className={`w-9 h-9 rounded-lg flex items-center justify-center text-sm shrink-0 transition-colors ${
                           activeSection === item.name
@@ -435,16 +516,12 @@ const Navbar = () => {
 
                       <span className="flex-1">{item.name}</span>
 
-                      {/* Animated Arrow */}
                       <motion.svg
                         className="w-4 h-4 text-gray-300 group-hover:text-green-500"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
                         strokeWidth={2.5}
-                        initial={{ x: 0 }}
-                        whileHover={{ x: 4 }}
-                        transition={{ type: "spring", stiffness: 400 }}
                       >
                         <path
                           strokeLinecap="round"
@@ -453,7 +530,6 @@ const Navbar = () => {
                         />
                       </motion.svg>
 
-                      {/* Active indicator dot */}
                       {activeSection === item.name && (
                         <motion.div
                           className="absolute left-2 w-1.5 h-1.5 bg-green-500 rounded-full"
@@ -464,70 +540,19 @@ const Navbar = () => {
                   ))}
                 </motion.div>
 
-                {/* Decorative Divider with animation */}
-                <motion.div
-                  className="h-px bg-gradient-to-r from-transparent via-green-200 to-transparent my-2"
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ delay: 0.4, duration: 0.5 }}
-                />
+                <div className="h-px bg-gradient-to-r from-transparent via-green-200 to-transparent my-2" />
 
-                {/* CTA BUTTON with pulse animation */}
-                <motion.a
-                  href="#products"
+                {/* Explore Button Mobile */}
+                <Link
+                  to="/category/All"
                   onClick={closeMenu}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.45, type: "spring", stiffness: 200 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="relative overflow-hidden flex items-center justify-center gap-2 bg-gradient-to-r from-green-600 to-green-500 text-white py-3.5 rounded-xl font-semibold shadow-lg shadow-green-500/30 text-sm group"
+                  className="relative overflow-hidden flex items-center justify-center gap-2 bg-gradient-to-r from-green-600 to-green-500 text-white py-3.5 rounded-xl font-semibold shadow-lg shadow-green-500/30 text-sm"
                 >
-                  {/* Animated background */}
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-green-500 via-emerald-400 to-green-500"
-                    animate={{
-                      backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                    }}
-                    transition={{
-                      duration: 2.5,
-                      repeat: Infinity,
-                      ease: "linear",
-                    }}
-                    style={{ backgroundSize: "200% 200%" }}
-                  />
-
-                  <motion.span
-                    animate={{ rotate: [0, -10, 10, 0] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  >
-                    <FaCapsules className="relative z-10" />
-                  </motion.span>
+                  <FaCapsules className="relative z-10" />
                   <span className="relative z-10">Explore Products</span>
-                  <motion.span
-                    className="relative z-10"
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ duration: 1.2, repeat: Infinity, delay: 0.5 }}
-                  >
-                    <FaArrowRight className="w-4 h-4" />
-                  </motion.span>
-
-                  {/* Shine effect */}
-                  <motion.div
-                    className="absolute inset-0 bg-white/20"
-                    initial={{ x: "-100%" }}
-                    whileHover={{ x: "100%" }}
-                    transition={{ duration: 0.5 }}
-                  />
-                </motion.a>
+                  <FaArrowRight className="w-4 h-4 relative z-10" />
+                </Link>
               </div>
-
-              {/* Decorative bottom glow */}
-              <motion.div
-                className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-green-100/50 to-transparent pointer-events-none"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.6 }}
-              />
             </motion.div>
           </>
         )}

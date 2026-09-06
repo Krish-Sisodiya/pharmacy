@@ -6,7 +6,6 @@ import Navbar from "../components/Header/Navbar";
 import Hero from "../components/Hero/Hero";
 import Categories from "../components/Categories/Categories";
 import About from "../components/About/About";
-import Team from "../components/Team/Team";
 import Contact from "../components/Contact/Contact";
 import Footer from "../components/Footer/Footer";
 import WhatsAppButton from "../components/WhatsAppButton";
@@ -68,11 +67,11 @@ const Home = () => {
           <About />
         </ScrollAnimationWrapper>
 
-        {/* TEAM — slide from left */}
+        {/* TEAM — slide from left 
         <ScrollAnimationWrapper direction="left" delay={0.05}>
           <Team />
         </ScrollAnimationWrapper>
-
+*/}
         {/* CONTACT — slide from right */}
         <ScrollAnimationWrapper direction="right" delay={0.05}>
           <Contact />
