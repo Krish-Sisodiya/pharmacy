@@ -116,7 +116,7 @@ const Footer = () => {
 </div>
               <div>
                 <h2 className="text-2xl font-black">
-                  Aushadhiwalah
+                  Aushadhi Walah
                 </h2>
               
               </div>
@@ -201,12 +201,12 @@ const Footer = () => {
         {/* COPYRIGHT */}
         <div className="pt-6 text-center">
           <p className="text-gray-400 text-sm">
-            © 2026 PharmaCare. All Rights Reserved.
+            © 2026 Aushadhi Walah. All Rights Reserved.
           </p>
           <p className="text-gray-500 text-sm mt-2">
             Designed & Developed by
             <span className="text-green-400 font-medium">
-              {" "}Sylect Us
+              {" "}Sylekt Us
             </span>
           </p>
         </div>

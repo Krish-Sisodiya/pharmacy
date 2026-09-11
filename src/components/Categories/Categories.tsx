@@ -34,13 +34,12 @@ const Categories = () => {
           {/* HEADING */}
           <h2 className="text-2xl sm:text-4xl lg:text-6xl font-black leading-tight mb-4">
             Explore Premium
-            <span className="gradient-text block">Healthcare Categories</span>
+            <span className="gradient-text block">Product Categories</span>
           </h2>
 
           {/* DESCRIPTION */}
           <p className="text-gray-500 text-sm sm:text-base lg:text-lg max-w-xl mx-auto leading-relaxed">
-            Discover modern pharmacy, skincare, wellness, healthcare,
-            and medical product collections with premium quality solutions.
+          At Aushadhi Walah we see herbs not as raw materials but as living systems of biointelligence. Our purpose is to translate that intelligence into clinically reliable botanical actives that advance global health and wellness.
           </p>
         </motion.div>
 

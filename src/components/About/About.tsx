@@ -6,9 +6,9 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 
 const images = [
-  "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=800&q=80",
-  "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80",
-  "https://images.unsplash.com/photo-1580281657527-47f249e8f4df?w=800&q=80",
+  "../../../public/img/About1.png",
+  "../../../public/img/about2.jpeg",
+  "../../../public/img/about3.jpeg",
 ];
 
 const About = () => {
@@ -39,7 +39,7 @@ const About = () => {
                 <SwiperSlide key={index}>
                   <img
                     src={image}
-                    alt="PharmaCare healthcare"
+                    alt="Aushadhiwalah"
                     className="w-full h-[240px] object-cover"
                     loading="lazy"
                   />
@@ -59,7 +59,7 @@ const About = () => {
                 <FaHeartbeat />
               </div>
               <div>
-                <p className="text-gray-800 text-sm font-bold">Modern Healthcare</p>
+                <p className="text-gray-800 text-sm font-bold">Aushadhiwalah</p>
                 <p className="text-gray-400 text-xs">Trusted Pharmacy Solutions</p>
               </div>
             </div>
@@ -99,23 +99,6 @@ const About = () => {
                 ))}
               </Swiper>
             </motion.div>
-
-            {/* FLOATING CARD — desktop */}
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity }}
-              className="absolute bottom-6 left-6 bg-white/20 backdrop-blur-2xl border border-white/20 rounded-3xl px-6 py-5 shadow-2xl"
-            >
-              <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-2xl bg-green-500 text-white flex items-center justify-center text-xl">
-                  <FaHeartbeat />
-                </div>
-                <div>
-                  <h3 className="text-white text-lg font-bold">Modern Healthcare</h3>
-                  <p className="text-green-100 text-sm">Trusted Pharmacy Solutions</p>
-                </div>
-              </div>
-            </motion.div>
           </motion.div>
 
           {/* RIGHT — TEXT */}
@@ -129,7 +112,7 @@ const About = () => {
             {/* BADGE */}
             <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full font-semibold text-xs sm:text-sm mb-4">
               <FaHeartbeat />
-              About PharmaCare
+              About Aushadhiwalah
             </div>
 
             {/* HEADING */}
@@ -140,15 +123,11 @@ const About = () => {
 
             {/* DESCRIPTION */}
             <p className="text-gray-600 text-sm sm:text-base lg:text-lg leading-relaxed mb-4">
-              PharmaCare provides premium healthcare, skincare, wellness,
-              and pharmacy solutions designed for healthier lifestyles
-              with trusted quality products and modern care services.
+              Aushadhi Walah provides premium herbal extracts, organic raw herbs, and essential oils designed to support healthier lifestyles and natural wellness. With a focus on trusted quality and authentic botanical ingredients, we bring nature and modern processing together.
             </p>
 
             <p className="text-gray-500 text-sm sm:text-base leading-relaxed mb-8">
-              Our platform combines modern healthcare products, wellness
-              essentials, skincare collections, and pharmacy solutions
-              with a smooth and trusted customer experience.
+             Our platform combines standardized herbal extracts, organic raw herbs, natural powders, and essential oils with a reliable supply chain and a seamless B2B and B2C customer experience, serving businesses looking for pure, consistent, and quality driven herbal ingredients.
             </p>
           </motion.div>
         </div>

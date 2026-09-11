@@ -41,22 +41,23 @@ const CategoryPage = () => {
         <div className="container-custom relative z-10 pt-6 sm:pt-10">
 
           {/* BACK BUTTON */}
-          <motion.button
-            onClick={() => navigate(-1)}
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.4 }}
-            whileHover={{ x: -4 }}
-            whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-2 text-green-700 font-semibold text-sm sm:text-base mb-6 sm:mb-8 group w-fit"
-          >
-            <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white border border-green-100 shadow-sm flex items-center justify-center text-green-600 group-hover:bg-green-600 group-hover:text-white group-hover:border-green-600 transition duration-300">
-              <FaArrowLeft className="text-sm" />
-            </span>
-            <span className="group-hover:text-green-600 transition duration-300">
-              Back
-            </span>
-          </motion.button>
+<motion.button
+  onClick={() => navigate("/")}
+  initial={{ opacity: 0, x: -20 }}
+  animate={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.4 }}
+  whileHover={{ x: -4 }}
+  whileTap={{ scale: 0.95 }}
+  className="flex items-center gap-2 text-green-700 font-semibold text-sm sm:text-base mb-6 sm:mb-8 group w-fit"
+>
+  <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white border border-green-100 shadow-sm flex items-center justify-center text-green-600 group-hover:bg-green-600 group-hover:text-white group-hover:border-green-600 transition duration-300">
+    <FaArrowLeft className="text-sm" />
+  </span>
+
+  <span className="group-hover:text-green-600 transition duration-300">
+    Back
+  </span>
+</motion.button>
 
           {/* PAGE TOP */}
           <motion.div
@@ -68,7 +69,7 @@ const CategoryPage = () => {
             <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-xl border border-green-100 px-4 py-2 rounded-full shadow-md mb-4">
               <FaCapsules className="text-green-600 text-xs" />
               <span className="font-semibold text-gray-700 text-xs sm:text-sm">
-                Healthcare Collection
+                Aushadhi Walah Collection
               </span>
             </div>
 

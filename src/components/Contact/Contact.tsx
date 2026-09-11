@@ -57,7 +57,7 @@ const Contact = () => {
           >
             {/* BADGE */}
             <div className="inline-flex items-center self-start bg-green-100 text-green-700 px-4 py-2 rounded-full font-semibold text-xs sm:text-sm mb-4 lg:mb-5">
-              Contact PharmaCare
+              Contact Aushadhi Walah
             </div>
 
             {/* TITLE */}
@@ -153,7 +153,7 @@ const Contact = () => {
               className="relative overflow-hidden rounded-3xl lg:rounded-[40px] shadow-[0_25px_70px_rgba(0,0,0,0.13)]"
             >
               <img
-                src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=800&q=80"
+                src="../../../public/img/categries 3.jpeg"
                 alt="Contact PharmaCare"
                 className="w-full h-[220px] sm:h-[360px] lg:h-[560px] object-cover"
               />
@@ -162,29 +162,7 @@ const Contact = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
 
               {/* FLOATING CARD — inside image, bottom */}
-              <motion.div
-                animate={{ y: [0, -6, 0] }}
-                transition={{ duration: 4, repeat: Infinity }}
-                className="absolute bottom-4 left-4 right-4 lg:bottom-6 lg:left-6 lg:right-6"
-              >
-                <div className="bg-white/15 backdrop-blur-2xl border border-white/25 rounded-2xl lg:rounded-3xl px-4 py-3 lg:px-6 lg:py-5">
-                  <div className="flex items-center gap-3 lg:gap-4">
-                    {/* ICON */}
-                    <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-xl bg-green-500 flex items-center justify-center text-white text-base lg:text-lg shrink-0">
-                      <FaPhoneAlt />
-                    </div>
-                    <div>
-                      <p className="text-white/70 text-xs mb-0.5">Available 24/7</p>
-                      <h3 className="text-white font-bold text-sm lg:text-base">
-                        PharmaCare Support
-                      </h3>
-                      <p className="text-green-300 text-xs lg:text-sm">
-                        Trusted Healthcare & Wellness
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
+            
             </motion.div>
           </motion.div>
 

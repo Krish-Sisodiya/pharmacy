@@ -10,17 +10,24 @@ import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <section
-      id="home"
-      className="relative overflow-hidden"
-    >
-      {/* GLOW */}
-      <div className="absolute top-0 left-0 w-52 h-52 bg-green-300/20 blur-[100px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-52 h-52 bg-green-200/20 blur-[100px] rounded-full pointer-events-none" />
+    <section id="home" className="relative overflow-hidden">
+      {/* 🌿 BOTANICAL HERBAL BACKGROUND IMAGE */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none"
+        style={{
+          backgroundImage: `url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=1600&q=80')`,
+        }}
+      />
 
-      <div className="container-custom relative z-10 py-6 sm:py-10 lg:py-20 flex flex-col lg:grid lg:grid-cols-2 lg:gap-14 lg:items-center gap-0">
+      {/* ⚪ SUBTLE OVERLAY — Brightness kam ki gayi hai taaki image acche se dikhe */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/50 to-white/70 backdrop-blur-[0.5px] pointer-events-none" />
 
-        {/* SLIDER — mobile: full width upar */}
+      {/* 🟢 AMBIENT ACCENT GLOWS */}
+      <div className="absolute -top-10 left-10 w-72 h-72 bg-emerald-400/20 blur-[100px] rounded-full pointer-events-none" />
+      <div className="absolute -bottom-10 right-10 w-80 h-80 bg-green-300/20 blur-[110px] rounded-full pointer-events-none" />
+
+      <div className="container-custom relative z-10 py-8 sm:py-12 lg:py-20 flex flex-col lg:grid lg:grid-cols-2 lg:gap-14 lg:items-center gap-0">
+        {/* SLIDER — mobile: upar */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -33,7 +40,7 @@ const Hero = () => {
             pagination={{ clickable: true }}
             autoplay={{ delay: 3000, disableOnInteraction: false }}
             loop={true}
-            className="rounded-3xl overflow-hidden"
+            className="rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.18)] border border-white/80"
           >
             {products.map((product) => (
               <SwiperSlide key={product.id}>
@@ -50,42 +57,40 @@ const Hero = () => {
           transition={{ duration: 0.7 }}
           className="text-center lg:text-left order-2 lg:order-1 px-2 pt-6 pb-8 lg:py-0"
         >
-         
+          {/* BADGE */}
+          <div className="inline-flex items-center gap-2 bg-white/90 border border-green-200/90 text-green-800 px-4 py-1.5 rounded-full font-bold text-xs sm:text-sm mb-4 shadow-md backdrop-blur-md">
+            <FaCapsules className="text-green-600 text-xs" />
+            <span>100% Pure Botanical Extracts</span>
+          </div>
 
           {/* HEADING */}
-          <h1 className="text-[26px] sm:text-5xl lg:text-7xl font-black leading-[1.1] mb-3">
+          <h1 className="text-[28px] sm:text-5xl lg:text-7xl font-black leading-[1.1] mb-3 text-gray-900 drop-shadow-sm">
             Herbal
             <span className="gradient-text block">Extracts</span>
             Manufacturer
           </h1>
 
           {/* DESCRIPTION */}
-          <p className="text-gray-500 text-sm sm:text-base lg:text-lg leading-relaxed mb-5 max-w-sm mx-auto lg:mx-0">
-            Premium Herbal Extracts, Nutraceutical Ingredients & Botanical Solutions .
+          <p className="text-gray-700 text-sm sm:text-base lg:text-lg leading-relaxed mb-6 max-w-sm mx-auto lg:mx-0 font-semibold drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]">
+            Premium Herbal Extracts, Nutraceutical Ingredients & Botanical
+            Solutions crafted for purity and efficacy.
           </p>
 
-          {/* BUTTONS */}
-          <Link
-  to="/category/All"
-  className="
-    flex items-center justify-center gap-2
-    bg-gradient-to-r
-    from-green-600
-    to-green-500
-    text-white
-    px-5 py-3
-    rounded-xl
-    font-semibold
-  "
->
-  <FaCapsules />
-  Explore Products
-  <FaArrowRight />
-</Link>
+          {/* BUTTON */}
+          <div className="flex justify-center lg:justify-start">
+            <Link
+              to="/category/All"
+              className="inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-green-600 to-emerald-500 hover:from-green-700 hover:to-emerald-600 text-white px-6 py-3.5 rounded-xl font-bold text-sm sm:text-base shadow-lg shadow-green-700/30 hover:shadow-green-700/50 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+            >
+              <FaCapsules />
+              <span>Explore Products</span>
+              <FaArrowRight className="text-xs" />
+            </Link>
+          </div>
         </motion.div>
       </div>
     </section>
   );
 };
 
-export default Hero; 
+export default Hero;

@@ -1,11 +1,31 @@
 import { motion } from "framer-motion";
-import { FaStar, FaCapsules } from "react-icons/fa";
+
+import { FaStar, FaWhatsapp, FaLeaf } from "react-icons/fa";
 
 interface Props {
   product: any;
 }
 
 const ProductCard = ({ product }: Props) => {
+  const whatsappNumber = "447776824776";
+
+  const handleBuyOnWhatsApp = () => {
+    const message = `Hello, I am interested in purchasing this product.
+
+Product Name: ${product.name}
+Category: ${product.category}
+Details: ${product.details}
+Rating: ${product.rating}
+
+Please share the price and availability.`;
+
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+      message
+    )}`;
+
+    window.open(whatsappUrl, "_blank");
+  };
+
   return (
     <motion.div
       whileHover={{ y: -6 }}
@@ -26,7 +46,7 @@ const ProductCard = ({ product }: Props) => {
 
         {/* ICON — top left */}
         <div className="absolute top-3 left-3 w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-white/20 backdrop-blur-xl border border-white/20 flex items-center justify-center text-white text-sm sm:text-base">
-          <FaCapsules />
+          <FaLeaf />
         </div>
 
         {/* RATING — bottom right */}
@@ -44,9 +64,20 @@ const ProductCard = ({ product }: Props) => {
         </h2>
 
         {/* DETAILS */}
-        <p className="text-gray-500 text-xs sm:text-sm leading-relaxed line-clamp-2">
+        <p className="text-gray-500 text-xs sm:text-sm leading-relaxed line-clamp-2 mb-4">
           {product.details}
         </p>
+
+        {/* BUY ON WHATSAPP BUTTON */}
+        <motion.button
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.96 }}
+          onClick={handleBuyOnWhatsApp}
+          className="w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1ebe5d] text-white font-semibold text-xs sm:text-sm py-2.5 sm:py-3 rounded-xl transition duration-300 shadow-sm"
+        >
+          <FaWhatsapp className="text-base sm:text-lg" />
+          Buy on WhatsApp
+        </motion.button>
       </div>
 
       {/* HOVER BORDER */}

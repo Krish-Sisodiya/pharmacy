@@ -3,28 +3,28 @@ export const categories = [
     id: 1,
     name: "Herbal Extracts",
     image:
-      "/img/categries 1.jpeg",
+      "/img/categries 4.jpeg",
   },
-
   {
     id: 2,
-    name: "Spray Dryer Powder",
+    name: "Essential Oils",
     image:
-      "/img/ccategries 2.jpeg",
+      "/img/categries 1.jpeg",
   },
+  
 
   {
     id: 3,
-    name: "Fruit Powder",
+    name: "Organic Raw Herbs",
     image:
-      "/img/categries 3.jpeg",
+      "/public/img/HERB.jpeg",
   },
 
   {
     id: 4,
-    name: "Dehydrated powder",
+    name: "Spray Dried Fruit Powders",
     image:
-      "/img/categries 4.jpeg",
+      "/img/categries 3.jpeg",
   },
 
 

@@ -1,7 +1,7 @@
 export const products = [
   {
     id: 1,
-    category: "Face Wash",
+    category: "Herbal Extracts",
     name: "Vitamin C Face Wash",
     image:
       "https://images.unsplash.com/photo-1620916566398-39f1143ab7be",
@@ -12,7 +12,7 @@ export const products = [
 
   {
     id: 2,
-    category: "Cream",
+    category: "Herbal Extracts",
     name: "Herbal Skin Cream",
     image:
       "https://images.unsplash.com/photo-1571781926291-c477ebfd024b",
@@ -23,7 +23,7 @@ export const products = [
 
   {
     id: 3,
-    category: "Powder",
+    category: "Essential Oils",
     name: "Medical Powder",
     image:
       "https://images.unsplash.com/photo-1587854692152-cbe660dbde88",
@@ -34,7 +34,7 @@ export const products = [
 
   {
     id: 4,
-    category: "Hair Oil",
+    category: "Organic Raw Herbs",
     name: "Hair Care Oil",
     image:
       "https://images.unsplash.com/photo-1625772452859-1c03d5bf1137",
@@ -45,7 +45,7 @@ export const products = [
 
   {
     id: 5,
-    category: "Medicines",
+    category: "Spray Dried Fruit Powders",
     name: "Cold Relief Medicine",
     image:
       "https://images.unsplash.com/photo-1584017911766-d451b3d0e843",
@@ -56,7 +56,147 @@ export const products = [
 
   {
     id: 6,
-    category: "Services",
+    category: "Spray Dried Fruit Powders",
+    name: "Vitamin Supplements",
+    image:
+      "https://images.unsplash.com/photo-1514995669114-6081e934b693",
+    rating: "4.9",
+    details:
+      "Daily wellness supplements for immunity and energy.",
+  },
+  {
+    id: 7,
+    category: "Spray Dried Fruit Powders",
+    name: "Vitamin Supplements",
+    image:
+      "https://images.unsplash.com/photo-1514995669114-6081e934b693",
+    rating: "4.9",
+    details:
+      "Daily wellness supplements for immunity and energy.",
+  },
+  {
+    id: 8,
+    category: "Spray Dried Fruit Powders",
+    name: "Vitamin Supplements",
+    image:
+      "https://images.unsplash.com/photo-1514995669114-6081e934b693",
+    rating: "4.9",
+    details:
+      "Daily wellness supplements for immunity and energy.",
+  },
+  {
+    id: 9,
+    category: "Spray Dried Fruit Powders",
+    name: "Vitamin Supplements",
+    image:
+      "https://images.unsplash.com/photo-1514995669114-6081e934b693",
+    rating: "4.9",
+    details:
+      "Daily wellness supplements for immunity and energy.",
+  },
+  {
+    id: 10,
+    category: "Spray Dried Fruit Powders",
+    name: "Vitamin Supplements",
+    image:
+      "https://images.unsplash.com/photo-1514995669114-6081e934b693",
+    rating: "4.9",
+    details:
+      "Daily wellness supplements for immunity and energy.",
+  },
+  {
+    id: 11,
+    category: "Spray Dried Fruit Powders",
+    name: "Vitamin Supplements",
+    image:
+      "https://images.unsplash.com/photo-1514995669114-6081e934b693",
+    rating: "4.9",
+    details:
+      "Daily wellness supplements for immunity and energy.",
+  },
+  {
+    id: 12,
+    category: "Spray Dried Fruit Powders",
+    name: "Vitamin Supplements",
+    image:
+      "https://images.unsplash.com/photo-1514995669114-6081e934b693",
+    rating: "4.9",
+    details:
+      "Daily wellness supplements for immunity and energy.",
+  },
+  {
+    id: 13,
+    category: "Spray Dried Fruit Powders",
+    name: "Vitamin Supplements",
+    image:
+      "https://images.unsplash.com/photo-1514995669114-6081e934b693",
+    rating: "4.9",
+    details:
+      "Daily wellness supplements for immunity and energy.",
+  },
+  {
+    id: 14,
+    category: "Spray Dried Fruit Powders",
+    name: "Vitamin Supplements",
+    image:
+      "https://images.unsplash.com/photo-1514995669114-6081e934b693",
+    rating: "4.9",
+    details:
+      "Daily wellness supplements for immunity and energy.",
+  },
+  {
+    id: 15,
+    category: "Spray Dried Fruit Powders",
+    name: "Vitamin Supplements",
+    image:
+      "https://images.unsplash.com/photo-1514995669114-6081e934b693",
+    rating: "4.9",
+    details:
+      "Daily wellness supplements for immunity and energy.",
+  },
+  {
+    id: 16,
+    category: "Spray Dried Fruit Powders",
+    name: "Vitamin Supplements",
+    image:
+      "https://images.unsplash.com/photo-1514995669114-6081e934b693",
+    rating: "4.9",
+    details:
+      "Daily wellness supplements for immunity and energy.",
+  },
+  {
+    id: 17,
+    category: "Spray Dried Fruit Powders",
+    name: "Vitamin Supplements",
+    image:
+      "https://images.unsplash.com/photo-1514995669114-6081e934b693",
+    rating: "4.9",
+    details:
+      "Daily wellness supplements for immunity and energy.",
+  },
+  {
+    id: 18,
+    category: "Spray Dried Fruit Powders",
+    name: "Vitamin Supplements",
+    image:
+      "https://images.unsplash.com/photo-1514995669114-6081e934b693",
+    rating: "4.9",
+    details:
+      "Daily wellness supplements for immunity and energy.",
+  },
+  {
+    id: 19,
+    category: "Spray Dried Fruit Powders",
+    name: "Vitamin Supplements",
+    image:
+      "https://images.unsplash.com/photo-1514995669114-6081e934b693",
+    rating: "4.9",
+    details:
+      "Daily wellness supplements for immunity and energy.",
+  },
+  {
+    id: 20,
+    category: "Spray Dried Fruit Powders",
     name: "Vitamin Supplements",
     image:
       "https://images.unsplash.com/photo-1514995669114-6081e934b693",
