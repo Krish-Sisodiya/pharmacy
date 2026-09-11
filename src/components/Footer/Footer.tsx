@@ -18,9 +18,21 @@ const quickLinks = [
 ];
 
 const socialIcons = [
-  FaFacebookF,
-  FaInstagram,
-  FaLinkedinIn,
+  {
+    icon: FaFacebookF,
+    url: "https://www.facebook.com/share/1Bxnsrkg85/?mibextid=wwXIfr",
+    label: "Facebook",
+  },
+  {
+    icon: FaInstagram,
+    url: "https://www.instagram.com/aushadhiwalah?stkn=eDE1NTB0cWNoZ2lm",
+    label: "Instagram",
+  },
+  {
+    icon: FaLinkedinIn,
+    url: "https://www.linkedin.com/company/aushadhi-walah/",
+    label: "LinkedIn",
+  },
 ];
 
 // Bubble animation variants
@@ -41,10 +53,10 @@ const bubbleVariants: Variants = {
 const generateBubbles = (count: number) => {
   return Array.from({ length: count }, (_, i) => ({
     id: i,
-    size: Math.random() * 60 + 20, // 20px to 80px
-    left: Math.random() * 100, // 0% to 100%
-    delay: Math.random() * 5, // 0s to 5s
-    duration: Math.random() * 4 + 6, // 6s to 10s
+    size: Math.random() * 60 + 20,
+    left: Math.random() * 100,
+    delay: Math.random() * 5,
+    duration: Math.random() * 4 + 6,
   }));
 };
 
@@ -52,14 +64,26 @@ const bubbles = generateBubbles(12);
 
 const Footer = () => {
   return (
-    <footer className="relative overflow-hidden bg-gradient-to-b from-[#062b16] via-[#041f11] to-black text-white pt-12 sm:pt-16 lg:pt-20 pb-8">
+    <footer className="relative overflow-hidden bg-[#03140a] text-white pt-12 sm:pt-16 lg:pt-20 pb-8">
+
+      {/* 🌿 ORGANIC DARK BOTANICAL / HERBAL BACKGROUND IMAGE */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none opacity-40 scale-105"
+        style={{
+          // Deep organic green tea & herbal leaves texture
+          backgroundImage: `url('/img/Footer.png')`,
+        }}
+      />
+
+      {/* 🌑 DARK GREEN TO BLACK GRADIENT OVERLAY (Text contrast aur depth ke liye) */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#062b16]/10 via-[#041f11]/50 to-black pointer-events-none" />
 
       {/* BG GLOW */}
-      <div className="absolute top-0 left-0 w-[320px] h-[320px] bg-green-500/10 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[260px] h-[260px] bg-green-400/10 blur-[100px] rounded-full pointer-events-none" />
+      <div className="absolute top-0 left-0 w-[320px] h-[320px] bg-green-500/15 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[260px] h-[260px] bg-emerald-400/10 blur-[100px] rounded-full pointer-events-none" />
 
       {/* ✨ FLOATING BUBBLES ANIMATION */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-[1]">
         {bubbles.map((bubble) => (
           <motion.div
             key={bubble.id}
@@ -95,33 +119,20 @@ const Footer = () => {
           {/* COMPANY INFO */}
           <div>
             <div className="flex items-center gap-3 mb-5">
-             
-
-<div
-  className="
-  w-14 h-14
-  rounded-2xl
-  bg-white
-  flex items-center justify-center
-  shadow-lg
-  border border-gray-200
-  overflow-hidden
-"
->
-  <img
-    src={logo}
-    alt=""
-    className="w-full h-full object-cover"
-  />
-</div>
+              <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center shadow-lg border border-gray-200 overflow-hidden">
+                <img
+                  src={logo}
+                  alt="Aushadhi Walah Logo"
+                  className="w-full h-full object-cover"
+                />
+              </div>
               <div>
                 <h2 className="text-2xl font-black">
                   Aushadhi Walah
                 </h2>
-              
               </div>
             </div>
-            <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
+            <p className="text-gray-300 text-sm leading-relaxed max-w-sm">
               Premium pharmacy and wellness platform providing trusted
               healthcare products, skincare solutions and wellness
               essentials with reliable customer support.
@@ -130,14 +141,14 @@ const Footer = () => {
 
           {/* QUICK LINKS */}
           <div>
-            <h3 className="text-lg font-bold mb-5">
+            <h3 className="text-lg font-bold mb-5 text-green-100">
               Quick Links
             </h3>
             <ul className="space-y-3">
               {quickLinks.map((item) => (
                 <li
                   key={item}
-                  className="text-gray-400 hover:text-green-400 transition duration-300"
+                  className="text-gray-300 hover:text-green-400 transition duration-300"
                 >
                   <a href={`#${item.toLowerCase()}`}>
                     {item}
@@ -149,25 +160,31 @@ const Footer = () => {
 
           {/* CONTACT INFO */}
           <div>
-            <h3 className="text-lg font-bold mb-5">
+            <h3 className="text-lg font-bold mb-5 text-green-100">
               Contact Information
             </h3>
             <div className="space-y-4">
               <div className="flex items-start gap-3">
                 <FaPhoneAlt className="text-green-400 mt-1" />
-                <span className="text-gray-400 text-sm">
+                <a 
+                  href="tel:+919691190195" 
+                  className="text-gray-300 text-sm hover:text-green-400 transition"
+                >
                   +91 9691190195
-                </span>
+                </a>
               </div>
               <div className="flex items-start gap-3">
                 <FaEnvelope className="text-green-400 mt-1" />
-                <span className="text-gray-400 text-sm">
+                <a 
+                  href="mailto:aushadhiwalah@gmail.com" 
+                  className="text-gray-300 text-sm hover:text-green-400 transition"
+                >
                   aushadhiwalah@gmail.com
-                </span>
+                </a>
               </div>
               <div className="flex items-start gap-3">
                 <FaMapMarkerAlt className="text-green-400 mt-1" />
-                <span className="text-gray-400 text-sm">
+                <span className="text-gray-300 text-sm">
                   Industrial Area Sanwer Road, Indore
                 </span>
               </div>
@@ -175,25 +192,34 @@ const Footer = () => {
 
             {/* SOCIAL ICONS */}
             <div className="flex items-center gap-3 mt-6">
-              {socialIcons.map((Icon, index) => (
-                <motion.div
-                  key={index}
-                  whileHover={{ y: -3, scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="
-                    w-10 h-10
-                    rounded-xl
-                    bg-white/10
-                    border border-white/10
-                    flex items-center justify-center
-                    cursor-pointer
-                    hover:bg-green-500
-                    transition duration-300
-                  "
-                >
-                  <Icon />
-                </motion.div>
-              ))}
+              {socialIcons.map((social) => {
+                const IconComponent = social.icon;
+                return (
+                  <motion.a
+                    key={social.label}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                    whileHover={{ y: -3, scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="
+                      w-10 h-10
+                      rounded-xl
+                      bg-white/10
+                      border border-white/10
+                      flex items-center justify-center
+                      cursor-pointer
+                      hover:bg-green-500
+                      hover:border-green-400
+                      text-white
+                      transition duration-300
+                    "
+                  >
+                    <IconComponent className="text-base" />
+                  </motion.a>
+                );
+              })}
             </div>
           </div>
         </div>

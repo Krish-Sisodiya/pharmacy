@@ -11,16 +11,17 @@ import { Link } from "react-router-dom";
 const Hero = () => {
   return (
     <section id="home" className="relative overflow-hidden">
-      {/* 🌿 BOTANICAL HERBAL BACKGROUND IMAGE */}
+      {/* 🌿 ATTRACTIVE ORGANIC HERBS & ESSENTIAL EXTRACT BACKGROUND */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none scale-105 transition-transform duration-1000"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=1600&q=80')`,
+          // Premium herbal mortar, green leaves & natural oil extract image
+          backgroundImage: `url('/img/Hero-bg.png')`,
         }}
       />
 
-      {/* ⚪ SUBTLE OVERLAY — Brightness kam ki gayi hai taaki image acche se dikhe */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/50 to-white/70 backdrop-blur-[0.5px] pointer-events-none" />
+      {/* ⚪ BALANCED WHITE/MINT OVERLAY — Image visible rahegi aur text readable hoga */}
+      <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/60 to-white/40 backdrop-blur-[1px] pointer-events-none" />
 
       {/* 🟢 AMBIENT ACCENT GLOWS */}
       <div className="absolute -top-10 left-10 w-72 h-72 bg-emerald-400/20 blur-[100px] rounded-full pointer-events-none" />
@@ -40,7 +41,7 @@ const Hero = () => {
             pagination={{ clickable: true }}
             autoplay={{ delay: 3000, disableOnInteraction: false }}
             loop={true}
-            className="rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.18)] border border-white/80"
+            className="rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.18)] border border-white/80 backdrop-blur-sm"
           >
             {products.map((product) => (
               <SwiperSlide key={product.id}>

@@ -22,7 +22,7 @@ export const categories = [
 
   {
     id: 4,
-    name: "Spray Dried Fruit Powders",
+    name: "Spray Dried Powders",
     image:
       "/img/categries 3.jpeg",
   },

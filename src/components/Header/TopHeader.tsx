@@ -9,10 +9,12 @@ import {
 import { motion, useScroll, useMotionValueEvent, useAnimation, AnimatePresence, type Variants } from "framer-motion";
 import { useState } from "react";
 
+// ✅ Har icon ke liye url property add kar di gayi hai
 const socialIcons = [
   { 
     icon: <FaFacebookF />, 
     label: "Facebook", 
+    url: "https://www.facebook.com/share/1Bxnsrkg85/?mibextid=wwXIfr", // 👈 Apna Facebook link yahan dalein
     rotate: 5,
     color: "hover:text-[#1877F2]",
     gradient: "from-[#1877F2]/20 to-[#42b72a]/20"
@@ -20,6 +22,7 @@ const socialIcons = [
   { 
     icon: <FaInstagram />, 
     label: "Instagram", 
+    url: "https://www.instagram.com/aushadhiwalah?stkn=eDE1NTB0cWNoZ2lm", // 👈 Apna Instagram link yahan dalein
     rotate: -5,
     color: "hover:text-[#E4405F]",
     gradient: "from-[#E4405F]/20 to-[#833AB4]/20"
@@ -27,13 +30,13 @@ const socialIcons = [
   { 
     icon: <FaLinkedinIn />, 
     label: "LinkedIn", 
+    url: "https://www.linkedin.com/company/aushadhi-walah/", // 👈 Apna LinkedIn link yahan dalein
     rotate: 5,
     color: "hover:text-[#0A66C2]",
     gradient: "from-[#0A66C2]/20 to-[#0077B5]/20"
   },
 ];
 
-// Animation variants for staggered entrance
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -45,7 +48,6 @@ const containerVariants: Variants = {
   },
 };
 
-// ✅ FIXED: Added custom parameter handling (optional, but safe)
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: -10, scale: 0.95 },
   visible: {
@@ -75,9 +77,6 @@ const socialVariants: Variants = {
   },
   tap: { scale: 0.9, rotate: 0 },
 };
-
-
-// ✅ Optional: Use floatVariants jaha needed ho, ya remove kardo
 
 const TopHeader = () => {
   const [isHovered, setIsHovered] = useState<string | null>(null);
@@ -113,7 +112,7 @@ const TopHeader = () => {
       }}
       className="relative overflow-hidden bg-gradient-to-r from-green-900 via-green-800 to-emerald-700 text-white shadow-lg"
     >
-      {/* ✨ Animated Gradient Overlay */}
+      {/* Animated Gradient Overlay */}
       <motion.div
         className="absolute inset-0 opacity-30"
         animate={{
@@ -127,7 +126,7 @@ const TopHeader = () => {
         style={{ backgroundSize: "200% 100%" }}
       />
 
-      {/* 🌟 Floating Particles */}
+      {/* Floating Particles */}
       {[...Array(6)].map((_, i) => (
         <motion.div
           key={i}
@@ -150,7 +149,7 @@ const TopHeader = () => {
         />
       ))}
 
-      {/* 💫 Glow Orbs */}
+      {/* Glow Orbs */}
       <motion.div
         className="absolute top-0 left-10 w-24 h-24 bg-green-400/20 blur-3xl rounded-full"
         animate={{
@@ -170,18 +169,17 @@ const TopHeader = () => {
 
       <div className="container-custom relative z-10 px-4 py-2 flex items-center justify-between gap-2">
 
-        {/* 📧 LEFT — EMAIL + PHONE */}
+        {/* LEFT — EMAIL + PHONE */}
         <motion.div 
           variants={containerVariants}
           initial="hidden"
           animate="visible"
           className="flex items-center gap-2"
         >
-          
           {/* EMAIL */}
           <motion.a
             variants={itemVariants}
-            href="aushadhiwalah@gmail.com"
+            href="mailto:aushadhiwalah@gmail.com"
             whileHover={{ scale: 1.05, x: 2 }}
             whileTap={{ scale: 0.95 }}
             onHoverStart={() => setIsHovered("email")}
@@ -207,19 +205,11 @@ const TopHeader = () => {
             </motion.span>
             
             <span className="text-[10px] sm:text-xs font-medium tracking-wide whitespace-nowrap hidden xs:block">
-              aushadhiwalah@gmail
+              aushadhiwalah@gmail.com
             </span>
             <span className="text-[10px] font-medium xs:hidden relative z-10">
               Email
             </span>
-            
-            <motion.span
-              className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-black/90 text-white text-[10px] rounded whitespace-nowrap opacity-0 pointer-events-none"
-              whileHover={{ opacity: 1, y: -2 }}
-              transition={{ duration: 0.2 }}
-            >
-              Send us a message
-            </motion.span>
           </motion.a>
 
           {/* PHONE */}
@@ -254,33 +244,10 @@ const TopHeader = () => {
             <span className="text-[10px] sm:text-xs font-medium tracking-wide whitespace-nowrap">
               +91 9691190195
             </span>
-            
-            <motion.div
-              className="flex gap-0.5"
-              animate={{ opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            >
-              {[...Array(3)].map((_, i) => (
-                <motion.span
-                  key={i}
-                  className="w-1 h-1 bg-green-400 rounded-full"
-                  animate={{
-                    scale: [1, 1.5, 1],
-                    opacity: [0.5, 1, 0.5],
-                  }}
-                  transition={{
-                    duration: 1.5,
-                    repeat: Infinity,
-                    delay: i * 0.2,
-                  }}
-                />
-              ))}
-            </motion.div>
           </motion.a>
-
         </motion.div>
 
-        {/* 🌐 RIGHT — SOCIAL ICONS ✅ FIXED */}
+        {/* RIGHT — SOCIAL ICONS (motion.a with links) */}
         <motion.div 
           variants={containerVariants}
           initial="hidden"
@@ -288,13 +255,15 @@ const TopHeader = () => {
           className="flex items-center gap-1.5 sm:gap-2"
         >
           {socialIcons.map((social) => (
-            <motion.div
+            <motion.a
               key={social.label}
-              // ✅ FIXED: Removed unused custom prop ya phir variants mein handle karo
+              href={social.url}
+              target="_blank"
+              rel="noopener noreferrer"
               variants={socialVariants}
-              initial="rest"        // ✅ Base state define kiya
-              animate="rest"        // ✅ Animate prop add kiya
-              whileHover="hover"    // ✅ String-based variant ab safely kaam karega
+              initial="rest"
+              animate="rest"
+              whileHover="hover"
               whileTap="tap"
               onHoverStart={() => setIsHovered(social.label.toLowerCase())}
               onHoverEnd={() => setIsHovered(null)}
@@ -308,10 +277,9 @@ const TopHeader = () => {
                 transition={{ duration: 0.3 }}
               />
               
-              {/* ✅ Icon with proper variants */}
-              <motion.span variants={socialVariants} className="relative z-10">
+              <span className="relative z-10">
                 {social.icon}
-              </motion.span>
+              </span>
               
               <motion.div
                 className="absolute inset-0 rounded-full border-2 border-white/50"
@@ -319,21 +287,13 @@ const TopHeader = () => {
                 whileHover={{ scale: 1.5, opacity: 0 }}
                 transition={{ duration: 0.4 }}
               />
-              
-              <motion.span
-                className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-black/90 text-white text-[10px] rounded whitespace-nowrap opacity-0 pointer-events-none z-20"
-                whileHover={{ opacity: 1, y: -2 }}
-                transition={{ duration: 0.2 }}
-              >
-                {social.label}
-              </motion.span>
-            </motion.div>
+            </motion.a>
           ))}
         </motion.div>
 
       </div>
 
-      {/* ✨ Animated Bottom Border */}
+      {/* Animated Bottom Border */}
       <motion.div 
         className="absolute bottom-0 left-0 w-full h-px"
         initial={{ scaleX: 0, originX: 0 }}
@@ -349,7 +309,7 @@ const TopHeader = () => {
         </div>
       </motion.div>
 
-      {/* 🚀 Scroll to Top Button */}
+      {/* Scroll to Top Button */}
       <AnimatePresence>
         {showScrollTop && (
           <motion.button
@@ -368,12 +328,6 @@ const TopHeader = () => {
             >
               <FaArrowUp className="text-sm" />
             </motion.div>
-            
-            <motion.div
-              className="absolute inset-0 rounded-full border-2 border-white/50"
-              animate={{ scale: [1, 1.4, 1], opacity: [0.6, 0, 0.6] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
           </motion.button>
         )}
       </AnimatePresence>
