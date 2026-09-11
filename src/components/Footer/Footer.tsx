@@ -66,24 +66,25 @@ const Footer = () => {
   return (
     <footer className="relative overflow-hidden bg-[#03140a] text-white pt-12 sm:pt-16 lg:pt-20 pb-8">
 
-      {/* 🌿 ORGANIC DARK BOTANICAL / HERBAL BACKGROUND IMAGE */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none opacity-40 scale-105"
-        style={{
-          // Deep organic green tea & herbal leaves texture
-          backgroundImage: `url('/img/Footer.png')`,
-        }}
-      />
+      {/* 🌿 MOBILE & DESKTOP AUTO-FIT BACKGROUND IMAGE */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+        <img
+          src="/public/img/Footer.png"
+          alt="Organic Herbal Background"
+          className="w-full h-full object-cover object-center opacity-45 select-none"
+          loading="lazy"
+        />
+      </div>
 
-      {/* 🌑 DARK GREEN TO BLACK GRADIENT OVERLAY (Text contrast aur depth ke liye) */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#062b16]/10 via-[#041f11]/50 to-black pointer-events-none" />
+      {/* 🌑 DARK GREEN TO BLACK GRADIENT OVERLAY */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#062b16]/10 via-[#041f11]/50 to-black pointer-events-none z-[1]" />
 
       {/* BG GLOW */}
-      <div className="absolute top-0 left-0 w-[320px] h-[320px] bg-green-500/15 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[260px] h-[260px] bg-emerald-400/10 blur-[100px] rounded-full pointer-events-none" />
+      <div className="absolute top-0 left-0 w-[240px] sm:w-[320px] h-[240px] sm:h-[320px] bg-green-500/15 blur-[90px] sm:blur-[120px] rounded-full pointer-events-none z-[1]" />
+      <div className="absolute bottom-0 right-0 w-[200px] sm:w-[260px] h-[200px] sm:h-[260px] bg-emerald-400/10 blur-[80px] sm:blur-[100px] rounded-full pointer-events-none z-[1]" />
 
       {/* ✨ FLOATING BUBBLES ANIMATION */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden z-[1]">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-[2]">
         {bubbles.map((bubble) => (
           <motion.div
             key={bubble.id}
@@ -114,12 +115,12 @@ const Footer = () => {
       <div className="container-custom relative z-10">
 
         {/* TOP GRID */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 pb-12 border-b border-white/10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 pb-10 sm:pb-12 border-b border-white/10">
 
           {/* COMPANY INFO */}
           <div>
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center shadow-lg border border-gray-200 overflow-hidden">
+            <div className="flex items-center gap-3 mb-4 sm:mb-5">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white flex items-center justify-center shadow-lg border border-gray-200 overflow-hidden shrink-0">
                 <img
                   src={logo}
                   alt="Aushadhi Walah Logo"
@@ -127,12 +128,12 @@ const Footer = () => {
                 />
               </div>
               <div>
-                <h2 className="text-2xl font-black">
+                <h2 className="text-xl sm:text-2xl font-black">
                   Aushadhi Walah
                 </h2>
               </div>
             </div>
-            <p className="text-gray-300 text-sm leading-relaxed max-w-sm">
+            <p className="text-gray-300 text-xs sm:text-sm leading-relaxed max-w-sm">
               Premium pharmacy and wellness platform providing trusted
               healthcare products, skincare solutions and wellness
               essentials with reliable customer support.
@@ -141,14 +142,14 @@ const Footer = () => {
 
           {/* QUICK LINKS */}
           <div>
-            <h3 className="text-lg font-bold mb-5 text-green-100">
+            <h3 className="text-base sm:text-lg font-bold mb-3 sm:mb-5 text-green-100">
               Quick Links
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-2.5 sm:space-y-3">
               {quickLinks.map((item) => (
                 <li
                   key={item}
-                  className="text-gray-300 hover:text-green-400 transition duration-300"
+                  className="text-gray-300 hover:text-green-400 transition duration-300 text-xs sm:text-sm"
                 >
                   <a href={`#${item.toLowerCase()}`}>
                     {item}
@@ -160,38 +161,38 @@ const Footer = () => {
 
           {/* CONTACT INFO */}
           <div>
-            <h3 className="text-lg font-bold mb-5 text-green-100">
+            <h3 className="text-base sm:text-lg font-bold mb-3 sm:mb-5 text-green-100">
               Contact Information
             </h3>
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               <div className="flex items-start gap-3">
-                <FaPhoneAlt className="text-green-400 mt-1" />
+                <FaPhoneAlt className="text-green-400 mt-1 shrink-0 text-sm" />
                 <a 
                   href="tel:+919691190195" 
-                  className="text-gray-300 text-sm hover:text-green-400 transition"
+                  className="text-gray-300 text-xs sm:text-sm hover:text-green-400 transition"
                 >
                   +91 9691190195
                 </a>
               </div>
               <div className="flex items-start gap-3">
-                <FaEnvelope className="text-green-400 mt-1" />
+                <FaEnvelope className="text-green-400 mt-1 shrink-0 text-sm" />
                 <a 
                   href="mailto:aushadhiwalah@gmail.com" 
-                  className="text-gray-300 text-sm hover:text-green-400 transition"
+                  className="text-gray-300 text-xs sm:text-sm hover:text-green-400 transition break-all"
                 >
                   aushadhiwalah@gmail.com
                 </a>
               </div>
               <div className="flex items-start gap-3">
-                <FaMapMarkerAlt className="text-green-400 mt-1" />
-                <span className="text-gray-300 text-sm">
+                <FaMapMarkerAlt className="text-green-400 mt-1 shrink-0 text-sm" />
+                <span className="text-gray-300 text-xs sm:text-sm">
                   Industrial Area Sanwer Road, Indore
                 </span>
               </div>
             </div>
 
             {/* SOCIAL ICONS */}
-            <div className="flex items-center gap-3 mt-6">
+            <div className="flex items-center gap-2.5 sm:gap-3 mt-5 sm:mt-6">
               {socialIcons.map((social) => {
                 const IconComponent = social.icon;
                 return (
@@ -204,7 +205,7 @@ const Footer = () => {
                     whileHover={{ y: -3, scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="
-                      w-10 h-10
+                      w-9 h-9 sm:w-10 sm:h-10
                       rounded-xl
                       bg-white/10
                       border border-white/10
@@ -216,7 +217,7 @@ const Footer = () => {
                       transition duration-300
                     "
                   >
-                    <IconComponent className="text-base" />
+                    <IconComponent className="text-sm sm:text-base" />
                   </motion.a>
                 );
               })}
@@ -226,10 +227,10 @@ const Footer = () => {
 
         {/* COPYRIGHT */}
         <div className="pt-6 text-center">
-          <p className="text-gray-400 text-sm">
+          <p className="text-gray-400 text-xs sm:text-sm">
             © 2026 Aushadhi Walah. All Rights Reserved.
           </p>
-          <p className="text-gray-500 text-sm mt-2">
+          <p className="text-gray-500 text-xs sm:text-sm mt-1.5 sm:mt-2">
             Designed & Developed by
             <span className="text-green-400 font-medium">
               {" "}Sylekt Us
