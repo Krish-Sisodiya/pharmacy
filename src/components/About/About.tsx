@@ -6,9 +6,9 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 
 const images = [
-  "../../../public/img/About1.png",
-  "../../../public/img/about2.jpeg",
-  "../../../public/img/about3.jpeg",
+  "../../../img/About1.png",
+  "../../../img/about2.jpeg",
+  "../../../img/about3.jpeg",
 ];
 
 const About = () => {

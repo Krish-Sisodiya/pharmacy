@@ -69,7 +69,7 @@ const Footer = () => {
       {/* 🌿 MOBILE & DESKTOP AUTO-FIT BACKGROUND IMAGE */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <img
-          src="/public/img/Footer.png"
+          src="/img/Footer.png"
           alt="Organic Herbal Background"
           className="w-full h-full object-cover object-center opacity-45 select-none"
           loading="lazy"
