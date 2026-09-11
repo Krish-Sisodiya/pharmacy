@@ -17,7 +17,7 @@ export const categories = [
     id: 3,
     name: "Organic Raw Herbs",
     image:
-      "/public/img/HERB.jpeg",
+      "/img/HERB.jpeg",
   },
 
   {
