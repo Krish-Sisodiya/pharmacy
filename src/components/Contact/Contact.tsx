@@ -170,7 +170,7 @@ const Contact = () => {
               className="relative overflow-hidden rounded-2xl sm:rounded-3xl lg:rounded-[36px] shadow-lg lg:shadow-[0_25px_70px_rgba(0,0,0,0.13)] border border-green-100"
             >
               <img
-                src="../../../public/img/categries 3.jpeg"
+                src="../../../img/categries 3.jpeg"
                 alt="Contact Aushadhi Walah"
                 className="w-full h-[200px] xs:h-[240px] sm:h-[340px] lg:h-[500px] object-cover object-center"
               />
