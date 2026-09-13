@@ -59,7 +59,7 @@ const About = () => {
                 <FaHeartbeat />
               </div>
               <div>
-                <p className="text-gray-800 text-sm font-bold">Aushadhiwalah</p>
+                <p className="text-gray-800 text-sm font-bold">Aushadhi Walah</p>
                 <p className="text-gray-400 text-xs">Trusted Pharmacy Solutions</p>
               </div>
             </div>
