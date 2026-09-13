@@ -201,7 +201,7 @@ export const products = [
     category: "Organic Raw Herbs",
     name: "Shatavari (Asparagus Racemosus)",
     image:
-      "/public/img/ORH3.jpeg",
+      "/img/ORH3.jpeg",
     rating: "4.9",
     details:
       "Organic raw herb traditionally valued in Ayurveda for supporting women’s wellness, vitality, digestion, and overall balance.",
