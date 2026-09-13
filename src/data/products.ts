@@ -15,7 +15,7 @@ export const products = [
     category: "Herbal Extracts",
     name: "Boswellia Extract",
     image:
-      "/img/HE2.png",
+      "/img/HE3.png",
     rating: "4.7",
     details:
       "A concentrated herbal extract traditionally used to support joint comfort, mobility, and a healthy inflammatory response.",
@@ -26,7 +26,7 @@ export const products = [
     category: "Herbal Extracts",
     name: "Berberine Extract",
     image:
-      "/img/HE3.png",
+      "/img/HE2.png",
     rating: "4.9",
     details:
       "A concentrated botanical extract known for its antioxidant properties and support for healthy metabolic and digestive function.",
@@ -48,7 +48,7 @@ export const products = [
     category: "Herbal Extracts",
     name: "Green Tea Extract",
     image:
-      "/img/HE5.png",
+      "/img/HE6.png",
     rating: "4.5",
     details:
       "A concentrated source of green tea’s natural antioxidants, supporting metabolism, energy, and overall wellness.",
@@ -59,7 +59,7 @@ export const products = [
     category: "Herbal Extracts",
     name: "Shilajit Extract",
     image:
-      "/img/HE6.png",
+      "/img/HE5.png",
     rating: "4.9",
     details:
       "A potent mineral-rich herbal extract traditionally used to support energy, stamina, vitality, and overall wellness.",
@@ -130,7 +130,7 @@ export const products = [
     category: "Spray Dried Powders",
     name: "Mango Powder",
     image:
-      "/img/SDP3.png",
+      "/img/SDP3.jpeg",
     rating: "4.9",
     details:
       "Fine, spray-dried mango powder with vibrant natural mango flavour and aroma—ideal for beverages, desserts, sauces, and food applications.",
@@ -201,7 +201,7 @@ export const products = [
     category: "Organic Raw Herbs",
     name: "Shatavari (Asparagus Racemosus)",
     image:
-      "/img/ORH3.png",
+      "/public/img/ORH3.jpeg",
     rating: "4.9",
     details:
       "Organic raw herb traditionally valued in Ayurveda for supporting women’s wellness, vitality, digestion, and overall balance.",
