@@ -65,12 +65,13 @@ const Hero = () => {
           </div>
 
           {/* HEADING */}
-          <h1 className="text-[28px] sm:text-5xl lg:text-7xl font-black leading-[1.1] mb-3 text-gray-900 drop-shadow-sm">
-            Herbal
-            <span className="gradient-text block">Extracts</span>
-            Manufacturer
-          </h1>
-
+<h1 className="text-[28px] sm:text-5xl lg:text-7xl font-black leading-[1.1] mb-3 text-slate-900 tracking-tight drop-shadow-[0_2px_4px_rgba(255,255,255,0.8)]">
+  Herbal
+  <span className="block bg-gradient-to-r from-emerald-900 via-green-800 to-teal-900 bg-clip-text text-transparent py-1">
+    Extracts
+  </span>
+  Manufacturer
+</h1>
           {/* DESCRIPTION */}
           <p className="text-gray-700 text-sm sm:text-base lg:text-lg leading-relaxed mb-6 max-w-sm mx-auto lg:mx-0 font-semibold drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]">
             Premium Herbal Extracts, Nutraceutical Ingredients & Botanical

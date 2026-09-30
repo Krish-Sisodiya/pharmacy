@@ -8,6 +8,9 @@ import {
   FaInfoCircle,
   FaPhoneAlt,
   FaArrowRight,
+  FaShoppingBag,
+  FaBriefcase,
+  FaQuestionCircle,
 } from "react-icons/fa";
 import {
   motion,
@@ -20,7 +23,10 @@ import { Link } from "react-router-dom";
 
 const navItems = [
   { name: "Home", icon: <FaHome />, link: "/" },
+  { name: "Shop", icon: <FaShoppingBag />, link: "#shop" },
   { name: "Products & Service", icon: <FaBoxOpen />, link: "#products" },
+  { name: "For Business", icon: <FaBriefcase />, link: "/category/All" },
+  { name: "Enquiry", icon: <FaQuestionCircle />, link: "/enquiry" },
   { name: "About", icon: <FaInfoCircle />, link: "#about" },
   { name: "Contact", icon: <FaPhoneAlt />, link: "#contact" },
 ];
@@ -106,42 +112,36 @@ const Navbar = () => {
 
   // Track active section for highlight
   useEffect(() => {
-  const handleScroll = () => {
-    const scrollPos = window.scrollY + 100;
+    const handleScroll = () => {
+      const scrollPos = window.scrollY + 100;
 
-    // ✅ Direct navItems pe loop chalao, taaki 'item' available rahe
-    for (const item of navItems) {
-      // Link se '#' hata kar section ID nikalo
-      const sectionId = item.link.replace("#", "");
-      
-      // Agar sectionId empty hai (jaise "/" for Home), toh special handling
-      if (!sectionId || sectionId === "/") {
-        if (scrollPos < 200) { // Top section maan lo
-          setActiveSection("Home");
-          break;
+      for (const item of navItems) {
+        const sectionId = item.link.replace("#", "");
+        
+        if (!sectionId || sectionId === "/") {
+          if (scrollPos < 200) {
+            setActiveSection("Home");
+            break;
+          }
+          continue;
         }
-        continue;
-      }
 
-      const element = document.getElementById(sectionId);
-      if (element) {
-        const { offsetTop, offsetHeight } = element;
-        if (scrollPos >= offsetTop && scrollPos < offsetTop + offsetHeight) {
-          // ✅ Ab 'item' available hai, toh item.name use kar sakte ho!
-          setActiveSection(item.name);
-          break;
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPos >= offsetTop && scrollPos < offsetTop + offsetHeight) {
+            setActiveSection(item.name);
+            break;
+          }
         }
       }
-    }
-  };
+    };
 
-  window.addEventListener("scroll", handleScroll, { passive: true });
-  return () => window.removeEventListener("scroll", handleScroll);
-}, []); // ✅ Dependencies empty rakh sakte ho kyunki navItems constant hais
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const closeMenu = () => setMenuOpen(false);
-
-  // Magnetic hover effect helper
 
   return (
     <motion.nav
@@ -191,28 +191,22 @@ const Navbar = () => {
           whileTap={{ scale: 0.97 }}
           className="flex items-center gap-2.5 cursor-pointer group"
         >
-          {/* Animated Logo Icon */}
-         <motion.div
-  className="relative w-25 h-15 overflow-hidden "
-  whileHover={{ rotate: [0, -5, 5, -5, 0] }}
-  transition={{ duration: 0.5 }}
->
-  <img
-    src="/img/1 (1).png"
-    alt="AushadhiWalah Logo"
-    className="w-full h-full object-cover"
-  />
-
-  <motion.div
-   
-    animate={{ scale: [1, 1.3, 1], opacity: [0.5, 0, 0.5] }}
-    transition={{ duration: 2, repeat: Infinity }}
-  />
-</motion.div>
-          {/* Logo Text with gradient animation */}
-          <div className="leading-tight overflow-hidden">
-            
-          </div>
+          <motion.div
+            className="relative w-25 h-15 overflow-hidden"
+            whileHover={{ rotate: [0, -5, 5, -5, 0] }}
+            transition={{ duration: 0.5 }}
+          >
+            <img
+              src="/img/1 (1).png"
+              alt="AushadhiWalah Logo"
+              className="w-full h-full object-cover"
+            />
+            <motion.div
+              animate={{ scale: [1, 1.3, 1], opacity: [0.5, 0, 0.5] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            />
+          </motion.div>
+          <div className="leading-tight overflow-hidden"></div>
         </motion.a>
 
         {/* 🖥️ DESKTOP MENU WITH HOVER ANIMATIONS */}
@@ -220,7 +214,7 @@ const Navbar = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="hidden lg:flex items-center gap-1"
+          className="hidden xl:flex items-center gap-1"
         >
           {navItems.map((item, index) => (
             <motion.li key={index} variants={itemVariants}>
@@ -230,7 +224,7 @@ const Navbar = () => {
                 whileHover="hover"
                 whileTap="tap"
                 onClick={() => setActiveSection(item.name)}
-                className={`group relative flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ${
+                className={`group relative flex items-center gap-1.5 px-3 py-2 rounded-xl text-sm font-semibold transition-all duration-300 ${
                   activeSection === item.name
                     ? "text-green-700 bg-green-50"
                     : "text-gray-600 hover:text-green-700 hover:bg-green-50/80"
@@ -238,7 +232,9 @@ const Navbar = () => {
               >
                 {/* Animated Icon */}
                 <motion.span
-                  className={`text-xs ${activeSection === item.name ? "text-green-600" : "text-green-500"}`}
+                  className={`text-xs ${
+                    activeSection === item.name ? "text-green-600" : "text-green-500"
+                  }`}
                   animate={
                     activeSection === item.name
                       ? {
@@ -284,13 +280,13 @@ const Navbar = () => {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.4 }}
-          className="hidden lg:block"
+          className="hidden xl:block"
         >
           <Link to="/category/All" className="relative overflow-hidden">
             <motion.button
               variants={magneticHover}
               initial="rest"
-              animate="rest" 
+              animate="rest"
               whileHover="hover"
               whileTap="tap"
               className="relative flex items-center gap-2 bg-gradient-to-r from-green-600 to-green-500 text-white px-5 py-2.5 rounded-xl font-semibold text-sm shadow-lg shadow-green-500/25 overflow-hidden"
@@ -331,7 +327,7 @@ const Navbar = () => {
           whileTap={{ scale: 0.85 }}
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
-          className="lg:hidden relative w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-green-100 to-emerald-50 flex items-center justify-center text-green-700 text-base shadow-sm border border-green-200/50 overflow-hidden"
+          className="xl:hidden relative w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-green-100 to-emerald-50 flex items-center justify-center text-green-700 text-base shadow-sm border border-green-200/50 overflow-hidden"
         >
           {/* Animated background pulse */}
           <motion.div
@@ -379,7 +375,7 @@ const Navbar = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={closeMenu}
-              className="lg:hidden fixed inset-0 top-[60px] bg-black/10 backdrop-blur-sm z-40"
+              className="xl:hidden fixed inset-0 top-[60px] bg-black/10 backdrop-blur-sm z-40"
             />
 
             {/* Menu Panel with spring animation */}
@@ -393,9 +389,8 @@ const Navbar = () => {
                 damping: 25,
                 mass: 0.8,
               }}
-              className="lg:hidden absolute w-full bg-white/95 backdrop-blur-xl border-t border-green-100 shadow-2xl shadow-green-500/10 z-50 overflow-hidden"
+              className="xl:hidden absolute w-full bg-white/95 backdrop-blur-xl border-t border-green-100 shadow-2xl shadow-green-500/10 z-50 overflow-hidden"
             >
-              {/* Decorative gradient top border */}
               <div className="h-1 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-400" />
 
               <div className="px-4 pt-4 pb-6 flex flex-col gap-2">
@@ -414,7 +409,7 @@ const Navbar = () => {
                       href={item.link}
                       onClick={closeMenu}
                       whileTap={{ scale: 0.98 }}
-                      className={`flex items-center gap-3 px-4 py-3.5 rounded-xl transition-all duration-200 font-medium text-sm group ${
+                      className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 font-medium text-sm group ${
                         activeSection === item.name
                           ? "bg-gradient-to-r from-green-500/10 to-emerald-500/10 text-green-700 border border-green-200/50"
                           : "bg-gray-50/80 hover:bg-green-50 hover:text-green-700 text-gray-700"
@@ -464,7 +459,7 @@ const Navbar = () => {
                   ))}
                 </motion.div>
 
-                {/* Decorative Divider with animation */}
+                {/* Decorative Divider */}
                 <motion.div
                   className="h-px bg-gradient-to-r from-transparent via-green-200 to-transparent my-2"
                   initial={{ scaleX: 0 }}
@@ -472,7 +467,7 @@ const Navbar = () => {
                   transition={{ delay: 0.4, duration: 0.5 }}
                 />
 
-                {/* CTA BUTTON with pulse animation */}
+                {/* CTA BUTTON */}
                 <motion.a
                   href="#products"
                   onClick={closeMenu}
@@ -482,7 +477,6 @@ const Navbar = () => {
                   whileTap={{ scale: 0.97 }}
                   className="relative overflow-hidden flex items-center justify-center gap-2 bg-gradient-to-r from-green-600 to-green-500 text-white py-3.5 rounded-xl font-semibold shadow-lg shadow-green-500/30 text-sm group"
                 >
-                  {/* Animated background */}
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-green-500 via-emerald-400 to-green-500"
                     animate={{
@@ -511,7 +505,6 @@ const Navbar = () => {
                     <FaArrowRight className="w-4 h-4" />
                   </motion.span>
 
-                  {/* Shine effect */}
                   <motion.div
                     className="absolute inset-0 bg-white/20"
                     initial={{ x: "-100%" }}
@@ -521,7 +514,6 @@ const Navbar = () => {
                 </motion.a>
               </div>
 
-              {/* Decorative bottom glow */}
               <motion.div
                 className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-green-100/50 to-transparent pointer-events-none"
                 initial={{ opacity: 0 }}
