@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
-
-import { FaStar, FaWhatsapp, FaLeaf } from "react-icons/fa";
+import { FaStar, FaWhatsapp, FaLeaf, FaExpandAlt } from "react-icons/fa";
 
 interface Props {
   product: any;
+  onImageClick?: () => void;
 }
 
-const ProductCard = ({ product }: Props) => {
+const ProductCard = ({ product, onImageClick }: Props) => {
   const whatsappNumber = "447776824776";
 
   const handleBuyOnWhatsApp = () => {
@@ -14,16 +14,14 @@ const ProductCard = ({ product }: Props) => {
 
 Product Name: ${product.name}
 Category: ${product.category}
-Details: ${product.details}
-Rating: ${product.rating}
+Details: ${product.details || "Not provided"}
+Rating: ${product.rating ?? "N/A"}
 
 Please share the price and availability.`;
 
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-      message
-    )}`;
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
-    window.open(whatsappUrl, "_blank");
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -33,8 +31,20 @@ Please share the price and availability.`;
       transition={{ duration: 0.35 }}
       className="group relative overflow-hidden rounded-2xl bg-white shadow-[0_8px_30px_rgba(0,0,0,0.08)] border border-green-100"
     >
-      {/* IMAGE */}
-      <div className="relative overflow-hidden">
+      {/* CLICKABLE IMAGE */}
+      <div
+        role="button"
+        tabIndex={0}
+        aria-label={`View details for ${product.name}`}
+        onClick={onImageClick}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            onImageClick?.();
+          }
+        }}
+        className="relative overflow-hidden cursor-pointer"
+      >
         <img
           src={product.image}
           alt={product.name}
@@ -42,34 +52,45 @@ Please share the price and availability.`;
         />
 
         {/* OVERLAY */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
 
-        {/* ICON — top left */}
-        <div className="absolute top-3 left-3 w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-white/20 backdrop-blur-xl border border-white/20 flex items-center justify-center text-white text-sm sm:text-base">
+        {/* LEAF ICON */}
+        <div className="absolute top-3 left-3 w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-white/20 backdrop-blur-xl border border-white/20 flex items-center justify-center text-white text-sm sm:text-base pointer-events-none">
           <FaLeaf />
         </div>
 
-        {/* RATING — bottom right */}
-        <div className="absolute bottom-3 right-3 flex items-center gap-1.5 bg-black/30 backdrop-blur-md px-2.5 py-1 rounded-full text-white text-xs font-semibold">
+        {/* RATING */}
+        <div className="absolute bottom-3 right-3 flex items-center gap-1.5 bg-black/40 backdrop-blur-md px-2.5 py-1 rounded-full text-white text-xs font-semibold pointer-events-none">
           <FaStar className="text-yellow-400 text-[10px]" />
-          {product.rating}
+          {product.rating ?? "N/A"}
+        </div>
+
+        {/* VIEW DETAILS HINT */}
+        <div className="absolute bottom-3 left-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+          <span className="flex items-center gap-1.5 bg-white/95 text-green-700 px-3 py-2 rounded-lg text-xs font-bold shadow-md">
+            <FaExpandAlt />
+            View Details
+          </span>
         </div>
       </div>
 
-      {/* CONTENT */}
+      {/* PRODUCT CONTENT */}
       <div className="p-3 sm:p-4 lg:p-5">
-        {/* NAME */}
         <h2 className="text-sm sm:text-base lg:text-lg font-bold text-gray-800 mb-1.5 leading-tight line-clamp-1">
           {product.name}
         </h2>
 
-        {/* DETAILS */}
-        <p className="text-gray-500 text-xs sm:text-sm leading-relaxed line-clamp-2 mb-4">
-          {product.details}
+        <p className="text-green-700 text-xs font-semibold mb-2">
+          {product.category}
         </p>
 
-        {/* BUY ON WHATSAPP BUTTON */}
+        <p className="text-gray-500 text-xs sm:text-sm leading-relaxed line-clamp-2 mb-4">
+          {product.details || "No additional details available."}
+        </p>
+
+        {/* WHATSAPP BUTTON */}
         <motion.button
+          type="button"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.96 }}
           onClick={handleBuyOnWhatsApp}

@@ -26,6 +26,11 @@ export const categories = [
     image:
       "/img/categries 3.jpeg",
   },
-
+{
+    id: 5,
+    name: "Edible Seeds",
+    image:
+      "/img/categries 5.jpeg",
+  },
 
 ];

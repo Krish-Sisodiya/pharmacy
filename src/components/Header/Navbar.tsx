@@ -23,7 +23,7 @@ import { Link } from "react-router-dom";
 
 const navItems = [
   { name: "Home", icon: <FaHome />, link: "/" },
-  { name: "Shop", icon: <FaShoppingBag />, link: "#shop" },
+  { name: "Shop", icon: <FaShoppingBag />, link: "/category/All" },
   { name: "Products & Service", icon: <FaBoxOpen />, link: "#products" },
   { name: "For Business", icon: <FaBriefcase />, link: "/category/All" },
   { name: "Enquiry", icon: <FaQuestionCircle />, link: "/enquiry" },

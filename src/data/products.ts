@@ -1,4 +1,6 @@
 export const products = [
+
+  // HERBAL EXTRACTS
   {
     id: 1,
     category: "Herbal Extracts",
@@ -53,7 +55,6 @@ export const products = [
     details:
       "A concentrated source of green tea’s natural antioxidants, supporting metabolism, energy, and overall wellness.",
   },
-
   {
     id: 6,
     category: "Herbal Extracts",
@@ -64,7 +65,7 @@ export const products = [
     details:
       "A potent mineral-rich herbal extract traditionally used to support energy, stamina, vitality, and overall wellness.",
   },
-  {
+   {
     id: 7,
     category: "Herbal Extracts",
     name: "Other Herbal Extracts",
@@ -74,6 +75,8 @@ export const products = [
     details:
       "We offer a wide range of high-quality herbal extracts sourced from selected herbs and botanicals, suitable for nutraceutical, pharmaceutical, food, cosmetic, and wellness applications.",
   },
+
+  // OILS
   {
     id: 8,
     category: "Essential Oils",
@@ -125,6 +128,9 @@ export const products = [
       "Explore our wide range of pure, aromatic essential oils for wellness, skincare, haircare, and everyday natural living.",
   },
 
+
+  // SPRAY DRIED POWDERS
+
   {
     id: 13,
     category: "Spray Dried Powders",
@@ -168,6 +174,96 @@ export const products = [
   {
     id: 17,
     category: "Spray Dried Powders",
+    name: "Moringa Powder",
+    image:
+      "/img/SDP5.jpeg",
+    rating: "4.9",
+    details:
+      "A leafy green ingredient that can contribute plant nutrients and naturally occurring antioxidants.",
+  },
+  {
+    id: 18,
+    category: "Spray Dried Powders",
+    name: "Hibiscus Flower Powders",
+    image:
+      "/img/SDP6.jpeg",
+    rating: "4.9",
+    details:
+      "A botanical ingredient for teas and blends, with naturally occurring plant pigments.",
+  },
+  {
+    id: 19,
+    category: "Spray Dried Powders",
+    name: "Coconut Water Powder",
+    image:
+      "/img/SDP7.jpeg",
+    rating: "4.9",
+    details:
+      "A convenient coconut-water ingredient for drink mixes; electrolyte content depends on formulation.",
+  },
+{
+    id: 20,
+    category: "Spray Dried Powders",
+    name: "Coconut Milk Powder",
+    image:
+      "/img/SDP8.jpeg",
+    rating: "4.9",
+    details:
+      "Adds coconut flavour and richness to beverages, desserts and food applications.",
+  },
+  {
+    id: 21,
+    category: "Spray Dried Powders",
+    name: "Defatted Peanut Protein Powder",
+    image:
+      "/img/SDP9.jpeg",
+    rating: "4.9",
+    details:
+      "A plant-based protein ingredient for recipes and blends. Contains peanut, a common allergen.",
+  },
+ {
+    id: 22,
+    category: "Spray Dried Powders",
+    name: "ABC Juice Powder",
+    image:
+      "/img/SDP10.jpeg",
+    rating: "4.9",
+    details:
+      "A fruit-and-vegetable blend inspired by apple, beetroot and carrot for drink mixes.",
+  },
+{
+    id: 23,
+    category: "Spray Dried Powders",
+    name: "Green Juice Powder",
+    image:
+      "/img/SDP11.jpeg",
+    rating: "4.9",
+    details:
+      "A convenient green-vegetable style ingredient for smoothies and drink blends; composition depends on recipe.",
+  },
+{
+    id: 24,
+    category: "Spray Dried Powders",
+    name: "Amla Juice Powder",
+    image:
+      "/img/SDP12.jpeg",
+    rating: "4.9",
+    details:
+      "A convenient amla-based ingredient for drink mixes; nutrient retention depends on processing and storage.",
+  },
+{
+    id: 25,
+    category: "Spray Dried Powders",
+    name: "Defatted Pumpkin Seed Protein Powder",
+    image:
+      "/img/SDP13.jpeg",
+    rating: "4.9",
+    details:
+      "A plant-based protein ingredient for smoothies, baking and nutrition blends.",
+  },
+{
+    id: 26,
+    category: "Spray Dried Powders",
     name: "Other Spray Dried Powders",
     image:
       "/img/SDP-Other.png",
@@ -176,8 +272,9 @@ export const products = [
       "Daily wellness supplements for immunity and energy.",
   },
 
+  // ORGANIC ROW HERBS
   {
-    id: 18,
+    id: 27,
     category: "Organic Raw Herbs",
     name: "Brahmi (Bacopa Monnieri)",
     image:
@@ -187,7 +284,7 @@ export const products = [
       "An organic Ayurvedic herb traditionally used to support memory, focus, and mental clarity.",
   },
   {
-    id: 19,
+    id: 28,
     category: "Organic Raw Herbs",
     name: "Arjuna Bark (Terminalia Arjuna)",
     image:
@@ -197,7 +294,7 @@ export const products = [
       "Organic raw herbal bark, traditionally valued in Ayurveda and commonly used to support cardiovascular and overall wellness.",
   },
   {
-    id: 20,
+    id: 29,
     category: "Organic Raw Herbs",
     name: "Shatavari (Asparagus Racemosus)",
     image:
@@ -207,7 +304,7 @@ export const products = [
       "Organic raw herb traditionally valued in Ayurveda for supporting women’s wellness, vitality, digestion, and overall balance.",
   },
   {
-    id: 21,
+    id: 30,
     category: "Organic Raw Herbs",
     name: "Wild Honey",
     image:
@@ -217,7 +314,7 @@ export const products = [
       "Pure, natural honey collected from wild blossoms, offering rich flavor and wholesome goodness.",
   },
   {
-    id: 22,
+    id: 31,
     category: "Organic Raw Herbs",
     name: "All Other Herbs",
     image:
@@ -226,4 +323,89 @@ export const products = [
     details:
       "Wide availability of organic raw herbs, sourced for quality, purity, and diverse applications.",
   },
+
+
+  // EDIBLE SEEDS
+   {
+    id: 32,
+    category: "Edible Seeds",
+    name: "Chia Seeds",
+    image:
+      "/img/ES1.jpeg",
+    rating: "4.9",
+    details:
+      "Provide dietary fibre, plant-based omega-3 ALA and minerals; absorb liquid and form a gel.",
+  },
+  {
+    id: 33,
+    category: "Edible Seeds",
+    name: "Flax Seeds",
+    image:
+      "/img/ES2.jpeg",
+    rating: "4.9",
+    details:
+      "Contain fibre, plant-based omega-3 ALA and lignans; ground flax can be easy to add to recipes.",
+  },
+  {
+    id: 34,
+    category: "Edible Seeds",
+    name: "Hemp Seeds",
+    image:
+      "/img/ES3.jpeg",
+    rating: "4.9",
+    details:
+      "Offer plant protein and unsaturated fats for salads, cereals and smoothies.",
+  },
+  {
+    id: 35,
+    category: "Edible Seeds",
+    name: "Pumpkin Seeds",
+    image:
+      "/img/ES4.jpeg",
+    rating: "4.9",
+    details:
+      "Provide plant protein, unsaturated fats and minerals such as magnesium and zinc.",
+  },
+   {
+    id: 36,
+    category: "Edible Seeds",
+    name: "Magaz Seeds (Melon Seeds)",
+    image:
+      "/img/ES5.jpeg",
+    rating: "4.9",
+    details:
+      "Used in traditional cooking; contribute plant fats and protein, depending on serving size.",
+  }, 
+  {
+    id: 37,
+    category: "Edible Seeds",
+    name: "Sesame Seeds",
+    image:
+      "/img/ES6.jpeg",
+    rating: "4.9",
+    details:
+      "Contain unsaturated fats, fibre and minerals. Sesame is a major food allergen for some people.",
+  },
+  {
+    id: 38,
+    category: "Edible Seeds",
+    name: "Gond Katira Seeds",
+    image:
+      "/img/ES7.jpeg",
+    rating: "4.9",
+    details:
+      "A traditional edible gum used after soaking in drinks and desserts; follow food-grade preparation instructions.",
+  },
+  {
+    id: 39,
+    category: "Edible Seeds",
+    name: "Edamame Seeds",
+    image:
+      "/img/ES8.jpeg",
+    rating: "4.9",
+    details:
+      "Young soybeans provide plant protein and fibre. Soy is a common food allergen.",
+  },
 ];
+
+
